@@ -1,0 +1,256 @@
+/* ==========================================================================
+   seopt-cuadricula-blogs.css  |  Versión 1.1.0 (2026-11-23)
+   Librería: seoptimizan-shopify-components  |  Autor: Seoptimizan
+   Componente: cuadricula-blogs (Blog Grid)  |  Bloque CSS: .seopt-blog-grid
+
+   Variables que fija el editor de temas en cada instancia (no se
+   sobrescriben desde :root; se cambian en el editor):
+     --seopt-blog-grid-cols       columnas en escritorio
+     --seopt-blog-grid-radius     radio de las tarjetas
+     --seopt-blog-grid-aspect     proporción de la imagen
+     --seopt-blog-grid-fit        object-fit de la imagen
+     --seopt-blog-grid-position   foco vertical de la imagen
+     --seopt-blog-grid-title-size tamaño del título de cada tarjeta
+
+   Variables que el cliente puede sobrescribir en :root (valor de respaldo
+   entre paréntesis):
+     --seopt-blog-grid-gap                separación entre tarjetas (1.6rem)
+     --seopt-blog-grid-mobile-card-width  ancho de tarjeta en el carrusel móvil (82%)
+     --seopt-blog-grid-card-border        color del borde de la tarjeta
+     --seopt-blog-grid-card-border-hover  color del borde al pasar el puntero
+     --seopt-blog-grid-card-shadow-hover  sombra al pasar el puntero
+     --seopt-blog-grid-card-padding       relleno interior de la tarjeta (1.8rem)
+     --seopt-blog-grid-cta-radius         radio del botón superior (999px)
+     --seopt-blog-grid-excerpt-lines      líneas visibles del extracto (3)
+     --seopt-blog-grid-header-gap         separación entre el título y el botón superior (1.2rem)
+     --seopt-blog-grid-header-margin      espacio bajo el encabezado (2.4rem)
+     --seopt-blog-grid-heading-gap        espacio bajo el título (0.6rem)
+     --seopt-blog-grid-cta-padding        relleno del botón superior (1.1rem 2.2rem)
+     --seopt-blog-grid-cta-size           tamaño del texto del botón superior (1.3rem)
+     --seopt-blog-grid-body-gap           separación entre los textos de la tarjeta (0.6rem)
+     --seopt-blog-grid-date-size          tamaño de la fecha (1.1rem)
+     --seopt-blog-grid-excerpt-size       tamaño del extracto (1.4rem)
+     --seopt-blog-grid-more-size          tamaño del enlace "leer más" (1.3rem)
+     --seopt-blog-grid-more-gap           separación entre el texto y la flecha (0.5rem)
+     --seopt-blog-grid-more-pad           espacio sobre el enlace "leer más" (0.6rem)
+     --seopt-blog-grid-progress-gap       espacio sobre la barra de progreso móvil (1.6rem)
+
+   Variable interna (la maneja el propio CSS, no se sobrescribe):
+     --seopt-blog-grid-arrow-x    desplazamiento de la flecha al pasar el puntero
+
+   Espaciado superior e inferior de la sección: clase .seopt-spacing-* del
+   core (requiere seopt-core.css 1.0.0 o superior).
+   ========================================================================== */
+
+.seopt-blog-grid {
+  display: block;
+}
+
+.seopt-blog-grid__header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--seopt-blog-grid-header-gap, 1.2rem);
+  margin-bottom: var(--seopt-blog-grid-header-margin, 2.4rem);
+  text-align: left;
+}
+
+.seopt-blog-grid__heading {
+  margin: 0 0 var(--seopt-blog-grid-heading-gap, 0.6rem);
+}
+
+.seopt-blog-grid__subheading {
+  margin: 0;
+  max-width: 60ch;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.seopt-blog-grid__cta {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  padding: var(--seopt-blog-grid-cta-padding, 1.1rem 2.2rem);
+  border: 1px solid rgb(var(--color-foreground));
+  border-radius: var(--seopt-blog-grid-cta-radius, 999px);
+  font-size: var(--seopt-blog-grid-cta-size, 1.3rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgb(var(--color-foreground));
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.seopt-blog-grid__cta:hover {
+  background: rgb(var(--color-foreground));
+  color: rgb(var(--color-background));
+}
+
+/* Lista de tarjetas: carrusel horizontal en móvil */
+.seopt-blog-grid__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: var(--seopt-blog-grid-mobile-card-width, 82%);
+  gap: var(--seopt-blog-grid-gap, 1.6rem);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.seopt-blog-grid__list::-webkit-scrollbar {
+  display: none;
+}
+
+.seopt-blog-grid__item {
+  scroll-snap-align: start;
+  min-width: 0;
+}
+
+/* Tarjeta: fina, minimalista, bordes redondeados */
+.seopt-blog-grid__card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: var(--seopt-blog-grid-radius, 16px);
+  overflow: hidden;
+  background: rgb(var(--color-background));
+  border: 1px solid var(--seopt-blog-grid-card-border, rgba(var(--color-foreground), 0.08));
+  text-decoration: none;
+  color: rgb(var(--color-foreground));
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+
+a.seopt-blog-grid__card:hover {
+  --seopt-blog-grid-arrow-x: 3px;
+  box-shadow: var(--seopt-blog-grid-card-shadow-hover, 0 10px 28px rgba(0, 0, 0, 0.08));
+  transform: translateY(-3px);
+  border-color: var(--seopt-blog-grid-card-border-hover, rgba(var(--color-foreground), 0.16));
+}
+
+.seopt-blog-grid__card--placeholder {
+  opacity: 0.55;
+}
+
+.seopt-blog-grid__image-wrap {
+  aspect-ratio: var(--seopt-blog-grid-aspect, 16/9);
+  overflow: hidden;
+  background: rgba(var(--color-foreground), 0.04);
+}
+
+.seopt-blog-grid__image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: var(--seopt-blog-grid-fit, cover);
+  object-position: var(--seopt-blog-grid-position, center);
+}
+
+.seopt-blog-grid__placeholder {
+  color: rgba(var(--color-foreground), 0.18);
+}
+
+.seopt-blog-grid__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--seopt-blog-grid-body-gap, 0.6rem);
+  padding: var(--seopt-blog-grid-card-padding, 1.8rem);
+  flex-grow: 1;
+}
+
+.seopt-blog-grid__date {
+  font-size: var(--seopt-blog-grid-date-size, 1.1rem);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgb(var(--color-foreground));
+}
+
+.seopt-blog-grid__title {
+  margin: 0;
+  font-size: var(--seopt-blog-grid-title-size, 1.7rem);
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.seopt-blog-grid__excerpt {
+  margin: 0;
+  font-size: var(--seopt-blog-grid-excerpt-size, 1.4rem);
+  line-height: 1.5;
+  /* Contraste de texto (WCAG 1.4.3): .85 pasa con margen. */
+  color: rgba(var(--color-foreground), 0.85);
+  display: -webkit-box;
+  -webkit-line-clamp: var(--seopt-blog-grid-excerpt-lines, 3);
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.seopt-blog-grid__read-more {
+  margin-top: auto;
+  padding-top: var(--seopt-blog-grid-more-pad, 0.6rem);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--seopt-blog-grid-more-gap, 0.5rem);
+  font-size: var(--seopt-blog-grid-more-size, 1.3rem);
+  font-weight: 600;
+}
+
+.seopt-blog-grid__read-more svg {
+  width: 16px;
+  height: 16px;
+  transform: translateX(var(--seopt-blog-grid-arrow-x, 0));
+  transition: transform 0.2s ease;
+}
+
+/* Barra de progreso: solo visible en móvil (carrusel) */
+.seopt-blog-grid__progress-track {
+  margin-top: var(--seopt-blog-grid-progress-gap, 1.6rem);
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(var(--color-foreground), 0.1);
+  overflow: hidden;
+}
+
+.seopt-blog-grid__progress-bar {
+  height: 100%;
+  width: 20%;
+  border-radius: 999px;
+  background: rgb(var(--color-foreground));
+  transition: width 0.15s ease-out;
+}
+
+@media screen and (min-width: 750px) {
+  .seopt-blog-grid__header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .seopt-blog-grid__list {
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+    grid-template-columns: repeat(var(--seopt-blog-grid-cols, 3), 1fr);
+    overflow-x: visible;
+    scroll-snap-type: none;
+  }
+
+  .seopt-blog-grid__progress-track {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seopt-blog-grid__cta,
+  .seopt-blog-grid__card,
+  .seopt-blog-grid__read-more svg,
+  .seopt-blog-grid__progress-bar {
+    transition: none;
+  }
+
+  a.seopt-blog-grid__card:hover {
+    --seopt-blog-grid-arrow-x: 0;
+    transform: none;
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "dawn": {
+    "version": "15.3.0"
+  },
+  "dawn_exceptions": [],
+  "installed": {
+    "core": {
+      "version": "1.2.0",
+      "library_commit": "00f66fcf50aca07faf2c5727d819509ed8f9fc65",
+      "files": {
+        "assets/seopt-core.css": "f0a77f48e036408ac72919e444cdb0ed4063af4eb16024e163b55c7f1f2cf44c",
+        "snippets/seopt-head.liquid": "6e1d9e0815264d5e748419fcec8f0510c280a926d64cc21e89b261ecb733a5c9"
+      }
+    },
+    "cuadricula-blogs": {
+      "version": "1.1.0",
+      "library_commit": "00f66fcf50aca07faf2c5727d819509ed8f9fc65",
+      "files": {
+        "assets/seopt-cuadricula-blogs.css": "fb4d31e3b0d0f389c07ed5a772809341f9f3b5ad081a6adb1fed53aba3dd0a8c",
+        "assets/seopt-cuadricula-blogs.js": "b035dd3f8c8e6d7771c117d26f9dfdb3398a852457348f2ca8e593bc8fe4ea0e",
+        "sections/cuadricula-blogs.liquid": "d2bc02c3af2170c09db45358fb918dae7d0b0eb46a985f9f1026f0dd14129c6b"
+      }
+    },
+    "hero-simple": {
+      "version": "1.1.0",
+      "library_commit": "00f66fcf50aca07faf2c5727d819509ed8f9fc65",
+      "files": {
+        "assets/seopt-hero-simple.css": "3e7af5e1a73d76ab21e64c94768fb3d22508f1cd64c8d9becd4d4e97bb91ab16",
+        "assets/seopt-hero-simple.js": "5008e4668f64e84d7235e0616750cfc20d20f47ea8490ceb5ae5090581c4b850",
+        "sections/hero-simple.liquid": "a2f6d56fad54ed4d4a78433c80aac72b02da129c69cc61ccc8c3d8ce4392f5ba"
+      }
+    },
+    "marquesina-promocional": {
+      "version": "1.1.0",
+      "library_commit": "00f66fcf50aca07faf2c5727d819509ed8f9fc65",
+      "files": {
+        "assets/seopt-marquesina-promocional.css": "e93c810f21c8d48d986ee2313a18b6396cc206d2eb85fad11df393a275e2340a",
+        "assets/seopt-marquesina-promocional.js": "c0f5207557fb120422fd6190873d357d7cafa11be62ab4a9bd74c5e0af53e9d3",
+        "sections/marquesina-promocional.liquid": "73f955b3fec2759fe20802569c0727ef76bfb96c2f484cc2cccd40afbc4064b1"
+      }
+    },
+    "precio-descuento": {
+      "version": "1.2.0",
+      "library_commit": "00f66fcf50aca07faf2c5727d819509ed8f9fc65",
+      "files": {
+        "assets/seopt-precio-descuento.css": "1481e92d0d92005cb034c794c6ba57347db4aa9007bef9c5eba0eebd2d9636ec",
+        "assets/seopt-precio-descuento.js": "c729f72dc1ffede083deb7f5da505f8e2fab90d8ecc94d82938190c1fa9f3f7a",
+        "sections/seoptimizan-precio-descuento.liquid": "6af146fa671dc8363588222045395bd603bc5b4aa475aae1c123524fbd988b8a"
+      }
+    }
+  }
+}

@@ -1,0 +1,358 @@
+{%- comment -%}
+  cuadricula-blogs (Blog Grid)  |  Versión 1.1.0 (2026-11-23)
+  Librería: seoptimizan-shopify-components  |  Autor: Seoptimizan
+  Dawn: mínimo 15.2.0  |  Requiere core: >=1.0.0 (escala .seopt-spacing-*)
+  No se edita en el repo de un cliente: se corrige en la librería y se actualiza.
+
+  Sección: Blog Grid (grid de artículos de blog).
+  Pinta los artículos de un blog de Shopify (usado como categoría) dentro de
+  cualquier página, por ejemplo artículos relacionados con una colección.
+
+  Archivos: assets/seopt-cuadricula-blogs.css y assets/seopt-cuadricula-blogs.js
+  (el JS se carga con defer). Autocontenida: sin snippets externos. La única
+  dependencia es el espaciado superior e inferior de la sección, que usa la
+  escala .seopt-spacing-* del core; sin ese archivo la sección funciona pero
+  pierde el relleno.
+  Variables CSS y personalización: ver README del componente.
+
+  Móvil (menos de 750px): carrusel horizontal con scroll-snap y barra de progreso.
+  Escritorio (750px o más): grid de tarjetas, columnas configurables.
+{%- endcomment -%}
+
+{{ 'seopt-cuadricula-blogs.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign blog = blogs[section.settings.blog] | default: blogs.news
+  assign posts_to_show = section.settings.posts_to_show | default: 3
+  assign columns_desktop = section.settings.columns_desktop | default: 3
+  assign image_ratio = section.settings.image_ratio | default: 'landscape'
+  assign show_excerpt = section.settings.show_excerpt
+  assign date_format = section.settings.date_format | default: 'abbreviated'
+  assign button_link = section.settings.button_link
+  if button_link == blank and blog
+    assign button_link = blog.url
+  endif
+
+  case section.settings.card_border_radius
+    when 'none'
+      assign card_radius = 0
+    when 'small'
+      assign card_radius = 8
+    when 'large'
+      assign card_radius = 24
+    else
+      assign card_radius = 16
+  endcase
+
+  case section.settings.title_size
+    when 'small'
+      assign title_size_rem = 1.5
+    when 'large'
+      assign title_size_rem = 2.0
+    when 'xl'
+      assign title_size_rem = 2.3
+    else
+      assign title_size_rem = 1.7
+  endcase
+
+  case image_ratio
+    when 'portrait'
+      assign image_aspect = '3/4'
+    when 'square'
+      assign image_aspect = '1/1'
+    else
+      assign image_aspect = '16/9'
+  endcase
+-%}
+
+<seopt-blog-grid
+  id="BlogGrid-{{ section.id }}"
+  class="seopt-blog-grid color-{{ section.settings.color_scheme }} seopt-spacing-{{ section.settings.section_spacing | default: 'normal' }}"
+  style="--seopt-blog-grid-cols: {{ columns_desktop }}; --seopt-blog-grid-radius: {{ card_radius }}px; --seopt-blog-grid-aspect: {{ image_aspect }}; --seopt-blog-grid-fit: {{ section.settings.image_fit }}; --seopt-blog-grid-position: {{ section.settings.image_position }}; --seopt-blog-grid-title-size: {{ title_size_rem }}rem;"
+>
+  <div class="page-width">
+    <div class="seopt-blog-grid__header">
+      <div class="seopt-blog-grid__header-text">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="seopt-blog-grid__heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subheading != blank -%}
+          <p class="seopt-blog-grid__subheading">{{ section.settings.subheading }}</p>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.button_label != blank -%}
+        {%- comment -%}
+          2026-10-28 — ACCESIBILIDAD: igual que en custom-mega-menu.liquid,
+          href="#" es un link fantasma (se anuncia como link pero no lleva
+          a ningún lado). button_link ya cae a blog.url cuando hay blog, así
+          que esto solo pasa sin blog seleccionado y sin URL configurada —
+          en ese caso se muestra el texto plano, sin envolverlo en <a>.
+        {%- endcomment -%}
+        {%- if button_link != blank -%}
+          <a href="{{ button_link }}" class="seopt-blog-grid__cta">
+            {{ section.settings.button_label }}
+          </a>
+        {%- else -%}
+          <span class="seopt-blog-grid__cta">
+            {{ section.settings.button_label }}
+          </span>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+
+    {%- liquid
+      assign has_articles = false
+      if blog and blog.articles_count > 0
+        assign has_articles = true
+      endif
+    -%}
+
+    <ul class="seopt-blog-grid__list" role="list">
+      {%- if has_articles -%}
+        {%- for article in blog.articles limit: posts_to_show -%}
+          <li class="seopt-blog-grid__item">
+            <a href="{{ article.url }}" class="seopt-blog-grid__card">
+              <div class="seopt-blog-grid__image-wrap">
+                {%- if article.image -%}
+                  {{
+                    article.image
+                    | image_url: width: 800
+                    | image_tag:
+                      loading: 'lazy',
+                      class: 'seopt-blog-grid__image',
+                      widths: '400,600,800'
+                  }}
+                {%- else -%}
+                  {{ 'image' | placeholder_svg_tag: 'seopt-blog-grid__image seopt-blog-grid__placeholder' }}
+                {%- endif -%}
+              </div>
+              <div class="seopt-blog-grid__body">
+                <span class="seopt-blog-grid__date">
+                  {%- if date_format == 'full' -%}
+                    {{ article.published_at | date: '%d de %B de %Y' }}
+                  {%- else -%}
+                    {{ article.published_at | date: '%m/%d/%Y' }}
+                  {%- endif -%}
+                </span>
+                <h3 class="seopt-blog-grid__title">{{ article.title }}</h3>
+                {%- if show_excerpt -%}
+                  <div class="seopt-blog-grid__excerpt">
+                    {{ article.excerpt_or_content | strip_html | truncatewords: 22 }}
+                  </div>
+                {%- endif -%}
+                {%- if section.settings.cta_text != blank -%}
+                  <span class="seopt-blog-grid__read-more">
+                    {{ section.settings.cta_text }}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  </span>
+                {%- endif -%}
+              </div>
+            </a>
+          </li>
+        {%- endfor -%}
+
+        {%- liquid
+          assign articles_shown = blog.articles_count | at_most: posts_to_show
+          assign placeholders_needed = posts_to_show | minus: articles_shown
+        -%}
+        {%- if placeholders_needed > 0 -%}
+          {%- for i in (1..placeholders_needed) -%}
+            <li class="seopt-blog-grid__item">
+              <div class="seopt-blog-grid__card seopt-blog-grid__card--placeholder">
+                <div class="seopt-blog-grid__image-wrap">
+                  {{ 'image' | placeholder_svg_tag: 'seopt-blog-grid__image seopt-blog-grid__placeholder' }}
+                </div>
+                <div class="seopt-blog-grid__body">
+                  <span class="seopt-blog-grid__date">&nbsp;</span>
+                  <h3 class="seopt-blog-grid__title">Próximo artículo</h3>
+                </div>
+              </div>
+            </li>
+          {%- endfor -%}
+        {%- endif -%}
+
+      {%- else -%}
+        {%- for i in (1..posts_to_show) -%}
+          <li class="seopt-blog-grid__item">
+            <div class="seopt-blog-grid__card seopt-blog-grid__card--placeholder">
+              <div class="seopt-blog-grid__image-wrap">
+                {{ 'image' | placeholder_svg_tag: 'seopt-blog-grid__image seopt-blog-grid__placeholder' }}
+              </div>
+              <div class="seopt-blog-grid__body">
+                <span class="seopt-blog-grid__date">&nbsp;</span>
+                <h3 class="seopt-blog-grid__title">Próximo artículo</h3>
+              </div>
+            </div>
+          </li>
+        {%- endfor -%}
+      {%- endif -%}
+    </ul>
+
+    <div class="seopt-blog-grid__progress-track" aria-hidden="true">
+      <div class="seopt-blog-grid__progress-bar" data-seopt-blog-progress></div>
+    </div>
+  </div>
+</seopt-blog-grid>
+
+<script src="{{ 'seopt-cuadricula-blogs.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Blog Grid",
+  "tag": "section",
+  "class": "seopt-blog-grid-section",
+  "settings": [
+    { "type": "header", "content": "Contenido" },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog",
+      "info": "Selecciona el blog del cual mostrar artículos"
+    },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Desde el blog" },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subtítulo",
+      "default": "Artículos y guías de nuestro blog."
+    },
+    { "type": "text", "id": "button_label", "label": "Texto del botón", "default": "VER TODO" },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Enlace del botón",
+      "info": "Si se deja vacío, enlaza al blog seleccionado"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Combinación de colores",
+      "default": "scheme-1"
+    },
+
+    { "type": "header", "content": "Configuración del grid" },
+    {
+      "type": "range",
+      "id": "posts_to_show",
+      "min": 3,
+      "max": 12,
+      "step": 1,
+      "default": 3,
+      "label": "Posts a mostrar"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3,
+      "label": "Columnas en escritorio"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Proporción de imagen",
+      "options": [
+        { "value": "landscape", "label": "Paisaje (16:9)" },
+        { "value": "portrait", "label": "Retrato (3:4)" },
+        { "value": "square", "label": "Cuadrado (1:1)" }
+      ],
+      "default": "landscape"
+    },
+
+    { "type": "header", "content": "Tarjetas de artículos" },
+    {
+      "type": "select",
+      "id": "title_size",
+      "label": "Tamaño del título del artículo",
+      "info": "Tamaño del H3 de cada tarjeta.",
+      "options": [
+        { "value": "small", "label": "Pequeño (15px)" },
+        { "value": "medium", "label": "Medio (17px) — actual" },
+        { "value": "large", "label": "Grande (20px)" },
+        { "value": "xl", "label": "Extra grande (23px)" }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "select",
+      "id": "card_border_radius",
+      "label": "Bordes de la tarjeta",
+      "info": "Controla qué tan redondeadas se ven las tarjetas",
+      "options": [
+        { "value": "none", "label": "Sin redondear" },
+        { "value": "small", "label": "Pequeño" },
+        { "value": "medium", "label": "Medio (recomendado)" },
+        { "value": "large", "label": "Grande" }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_excerpt",
+      "label": "Mostrar extracto",
+      "default": false,
+      "info": "Muestra un resumen del artículo en cada tarjeta"
+    },
+    {
+      "type": "select",
+      "id": "date_format",
+      "label": "Formato de fecha",
+      "options": [
+        { "value": "abbreviated", "label": "Abreviado (MM/DD/YYYY)" },
+        { "value": "full", "label": "Completo (DD de Mes de YYYY)" }
+      ],
+      "default": "abbreviated"
+    },
+    { "type": "text", "id": "cta_text", "label": "Texto del CTA en tarjetas", "default": "Leer más" },
+
+    { "type": "header", "content": "Imágenes" },
+    {
+      "type": "select",
+      "id": "image_fit",
+      "label": "Ajuste de imagen",
+      "options": [
+        { "value": "cover", "label": "Cubrir" },
+        { "value": "contain", "label": "Contener" },
+        { "value": "fill", "label": "Llenar" },
+        { "value": "scale-down", "label": "Reducir" },
+        { "value": "none", "label": "Ninguno" }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Foco de la imagen",
+      "options": [
+        { "value": "top", "label": "Arriba" },
+        { "value": "center", "label": "Centro" },
+        { "value": "bottom", "label": "Abajo" }
+      ],
+      "default": "center"
+    },
+
+    { "type": "header", "content": "Espaciado" },
+    {
+      "type": "select",
+      "id": "section_spacing",
+      "label": "Espaciado de la sección",
+      "info": "Mismo espacio arriba y abajo. Se reduce automáticamente en mobile.",
+      "options": [
+        { "value": "compact", "label": "Compacto (20px)" },
+        { "value": "medium", "label": "Medio (40px)" },
+        { "value": "normal", "label": "Normal (60px) — recomendado" },
+        { "value": "wide", "label": "Amplio (80px)" }
+      ],
+      "default": "normal"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog Grid"
+    }
+  ]
+}
+{% endschema %}

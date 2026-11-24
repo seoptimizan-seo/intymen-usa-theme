@@ -1,0 +1,50 @@
+/* ==========================================================================
+   seopt-core.css  |  Versión 1.2.0 (2026-11-23)
+   Librería: seoptimizan-shopify-components  |  Autor: Seoptimizan
+   Dawn: mínimo 15.2.0
+
+   Idéntico en todos los clientes. El cliente NO lo edita: para cambiar un
+   valor sobrescribe el token en :root desde seoptimizan-custom.css.
+   Contiene solo tokens por defecto y utilidades genéricas. Nada específico
+   de un componente ni de un cliente.
+
+   Orden de carga: base.css (nativo) > seopt-core.css > CSS de cada
+   componente > seoptimizan-custom.css (por cliente).
+
+   Tokens
+     Espaciado de sección (escritorio / móvil, móvil por debajo de 750px)
+       --seopt-space-compact   20px / 12px   (--seopt-space-compact-mobile)
+       --seopt-space-medium    40px / 24px   (--seopt-space-medium-mobile)
+       --seopt-space-normal    60px / 32px   (--seopt-space-normal-mobile)
+       --seopt-space-wide      80px / 40px   (--seopt-space-wide-mobile)
+   Utilidades
+     .seopt-spacing-compact | -medium | -normal | -wide
+       padding superior e inferior según el token de sección.
+
+   Cambio en 1.1.0: en móvil ya no se aplica 60% del valor de escritorio sino
+   un token móvil propio. Normal pasa de 36px a 32px y wide de 48px a 40px.
+   ========================================================================== */
+
+:root {
+  --seopt-space-compact: 20px;
+  --seopt-space-medium: 40px;
+  --seopt-space-normal: 60px;
+  --seopt-space-wide: 80px;
+
+  --seopt-space-compact-mobile: 12px;
+  --seopt-space-medium-mobile: 24px;
+  --seopt-space-normal-mobile: 32px;
+  --seopt-space-wide-mobile: 40px;
+}
+
+.seopt-spacing-compact { padding-top: var(--seopt-space-compact-mobile); padding-bottom: var(--seopt-space-compact-mobile); }
+.seopt-spacing-medium  { padding-top: var(--seopt-space-medium-mobile);  padding-bottom: var(--seopt-space-medium-mobile); }
+.seopt-spacing-normal  { padding-top: var(--seopt-space-normal-mobile);  padding-bottom: var(--seopt-space-normal-mobile); }
+.seopt-spacing-wide    { padding-top: var(--seopt-space-wide-mobile);    padding-bottom: var(--seopt-space-wide-mobile); }
+
+@media screen and (min-width: 750px) {
+  .seopt-spacing-compact { padding-top: var(--seopt-space-compact); padding-bottom: var(--seopt-space-compact); }
+  .seopt-spacing-medium  { padding-top: var(--seopt-space-medium);  padding-bottom: var(--seopt-space-medium); }
+  .seopt-spacing-normal  { padding-top: var(--seopt-space-normal);  padding-bottom: var(--seopt-space-normal); }
+  .seopt-spacing-wide    { padding-top: var(--seopt-space-wide);    padding-bottom: var(--seopt-space-wide); }
+}

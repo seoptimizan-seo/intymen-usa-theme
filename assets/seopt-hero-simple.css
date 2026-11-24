@@ -1,0 +1,249 @@
+/* ==========================================================================
+   seopt-hero-simple.css  |  Versión 1.1.0 (2026-11-23)
+   Librería: seoptimizan-shopify-components  |  Autor: Seoptimizan
+   Componente: hero-simple  |  Bloque CSS: .seopt-hero
+
+   Variables que fija el editor de temas en cada instancia (no se
+   sobrescriben desde :root; se cambian en el editor):
+     --seopt-hero-overlay-angle, --seopt-hero-overlay-c1, --seopt-hero-overlay-c2,
+     --seopt-hero-overlay-stop-start, --seopt-hero-overlay-stop-end
+     --seopt-hero-min-height-mobile, --seopt-hero-min-height-desktop
+     --seopt-hero-content-max, --seopt-hero-content-align, --seopt-hero-text-align
+     --seopt-hero-radius, --seopt-hero-bg-y
+     --seopt-hero-iframe-top, --seopt-hero-iframe-bottom, --seopt-hero-iframe-ty
+     --seopt-hero-eyebrow-size-mobile / -desktop
+     --seopt-hero-heading-size-mobile / -desktop
+     --seopt-hero-text-size-mobile / -desktop
+
+   Variables que el cliente puede sobrescribir en :root (valor de respaldo
+   entre paréntesis):
+     --seopt-hero-heading-weight        grosor del título (900)
+     --seopt-hero-eyebrow-weight        grosor del eyebrow (600)
+     --seopt-hero-eyebrow-tracking      espaciado de letras del eyebrow (0.06em)
+     --seopt-hero-eyebrow-opacity       opacidad del eyebrow (0.85)
+     --seopt-hero-content-padding       relleno del bloque en móvil (2.4rem)
+     --seopt-hero-content-padding-md    relleno desde 990px (3.2rem)
+     --seopt-hero-content-padding-lg    relleno desde 1200px (4rem)
+     --seopt-hero-toggle-size           diámetro del botón de pausa (36px)
+     --seopt-hero-toggle-offset         distancia a la esquina (16px)
+     --seopt-hero-toggle-bg             fondo del botón de pausa (rgba(0, 0, 0, 0.75))
+     --seopt-hero-toggle-color          color del icono (#fff)
+     --seopt-hero-disabled-opacity      opacidad del botón sin enlace (0.6)
+     --seopt-hero-content-pad-y         relleno vertical de la capa de contenido (2rem)
+     --seopt-hero-eyebrow-gap           espacio bajo el eyebrow (0.6rem)
+     --seopt-hero-heading-gap           espacio bajo el título (0.8rem)
+     --seopt-hero-text-gap              espacio bajo el texto (1.2rem)
+
+   ========================================================================== */
+
+.seopt-hero__media {
+  display: block;
+  position: relative;
+  min-height: var(--seopt-hero-min-height-mobile, 360px);
+  overflow: hidden;
+  border-radius: var(--seopt-hero-radius, 0);
+}
+
+/* Imágenes y placeholder: llenan el contenedor */
+.seopt-hero__img,
+.seopt-hero__placeholder {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center var(--seopt-hero-bg-y, 50%);
+}
+
+/* Móvil primero: el orden de estas dos reglas decide la visibilidad */
+.seopt-hero__img--desktop {
+  display: none;
+}
+
+.seopt-hero__img--mobile {
+  display: block;
+}
+
+/* Video de fondo */
+.seopt-hero__video {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.seopt-hero__video-el {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center var(--seopt-hero-bg-y, 50%);
+}
+
+/* Rendimiento (CLS): los iframes no soportan object-fit. El "cover" se
+   resuelve solo con CSS, sin medir por JS: el iframe se dibuja sobredimensionado
+   con unidades vw/vh cruzadas y con min-width/min-height de respaldo, de modo
+   que siempre cubre el contenedor. El anclaje vertical (arriba, centro,
+   abajo) llega por las variables --seopt-hero-iframe-top, -bottom y -ty. */
+.seopt-hero__iframe {
+  position: absolute;
+  top: var(--seopt-hero-iframe-top, 50%);
+  bottom: var(--seopt-hero-iframe-bottom, auto);
+  left: 50%;
+  display: block;
+  width: 177.78vh;
+  min-width: 100%;
+  height: 56.25vw;
+  min-height: 100%;
+  transform: translate(-50%, var(--seopt-hero-iframe-ty, -50%));
+  pointer-events: none;
+}
+
+/* Overlay: dos niveles de oscuridad controlados desde el editor */
+.seopt-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    var(--seopt-hero-overlay-angle, 180deg),
+    var(--seopt-hero-overlay-c1, rgba(0, 0, 0, 0.7)) var(--seopt-hero-overlay-stop-start, 0%),
+    var(--seopt-hero-overlay-c2, rgba(0, 0, 0, 0.35)) var(--seopt-hero-overlay-stop-end, 100%)
+  );
+  pointer-events: none;
+}
+
+/* Contenido por encima del overlay. Usa .page-width de Dawn para centrar; el
+   relleno horizontal de esa clase se anula aquí (esta hoja carga después de
+   base.css). */
+.seopt-hero__content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: var(--seopt-hero-content-align, center);
+  padding: var(--seopt-hero-content-pad-y, 2rem) 0;
+}
+
+.seopt-hero__content-inner {
+  width: 100%;
+  max-width: var(--seopt-hero-content-max, 720px);
+  padding: var(--seopt-hero-content-padding, 2.4rem);
+  text-align: var(--seopt-hero-text-align, center);
+}
+
+.seopt-hero__eyebrow {
+  display: block;
+  margin: 0 0 var(--seopt-hero-eyebrow-gap, 0.6rem) 0;
+  color: rgb(var(--color-foreground));
+  opacity: var(--seopt-hero-eyebrow-opacity, 0.85);
+  font-size: var(--seopt-hero-eyebrow-size-mobile, 14px);
+  font-weight: var(--seopt-hero-eyebrow-weight, 600);
+  letter-spacing: var(--seopt-hero-eyebrow-tracking, 0.06em);
+  text-transform: uppercase;
+}
+
+.seopt-hero__heading {
+  margin: 0 0 var(--seopt-hero-heading-gap, 0.8rem) 0;
+  color: rgb(var(--color-foreground));
+  font-size: var(--seopt-hero-heading-size-mobile, 48px);
+  font-weight: var(--seopt-hero-heading-weight, 900);
+}
+
+.seopt-hero__text {
+  margin-bottom: var(--seopt-hero-text-gap, 1.2rem);
+  color: rgb(var(--color-foreground));
+  font-size: var(--seopt-hero-text-size-mobile, 17px);
+}
+
+.seopt-hero__button--disabled {
+  opacity: var(--seopt-hero-disabled-opacity, 0.6);
+  pointer-events: none;
+}
+
+/* Botón de pausa del video de fondo (WCAG 2.2.2) */
+.seopt-hero__autoplay-toggle {
+  position: absolute;
+  top: var(--seopt-hero-toggle-offset, 16px);
+  right: var(--seopt-hero-toggle-offset, 16px);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--seopt-hero-toggle-size, 36px);
+  height: var(--seopt-hero-toggle-size, 36px);
+  border: 0;
+  border-radius: 999px;
+  /* Contraste reforzado (WCAG AAA): con 0.75 de opacidad el icono blanco
+     conserva cerca de 11:1 incluso sobre un fondo blanco. */
+  background: var(--seopt-hero-toggle-bg, rgba(0, 0, 0, 0.75));
+  color: var(--seopt-hero-toggle-color, #fff);
+  line-height: 1;
+  cursor: pointer;
+}
+
+.seopt-hero__autoplay-toggle:focus-visible {
+  outline: 2px solid var(--seopt-hero-toggle-color, #fff);
+  outline-offset: 2px;
+}
+
+.seopt-hero__autoplay-icon[hidden] {
+  display: none;
+}
+
+.seopt-hero__autoplay-icon svg {
+  display: block;
+  width: 12px;
+  height: 12px;
+}
+
+@media screen and (min-width: 750px) {
+  .seopt-hero__media {
+    min-height: var(--seopt-hero-min-height-desktop, 520px);
+  }
+
+  .seopt-hero__img--desktop {
+    display: block;
+  }
+
+  .seopt-hero__img--mobile {
+    display: none;
+  }
+
+  .seopt-hero__eyebrow {
+    font-size: var(--seopt-hero-eyebrow-size-desktop, 15px);
+  }
+
+  .seopt-hero__heading {
+    font-size: var(--seopt-hero-heading-size-desktop, 80px);
+  }
+
+  .seopt-hero__text {
+    font-size: var(--seopt-hero-text-size-desktop, 19px);
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .seopt-hero__content-inner {
+    padding: var(--seopt-hero-content-padding-md, 3.2rem);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .seopt-hero__content-inner {
+    padding: var(--seopt-hero-content-padding-lg, 4rem);
+  }
+}
+
+/* Quien pidió "reducir movimiento" no recibe el autoplay (el JS pausa el
+   video al cargar), así que no necesita el botón. */
+@media (prefers-reduced-motion: reduce) {
+  .seopt-hero__autoplay-toggle {
+    display: none;
+  }
+}

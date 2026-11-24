@@ -1,0 +1,114 @@
+{%- comment -%}
+  seoptimizan-precio-descuento  |  Versión 1.2.0 (2026-11-24)
+  Librería: seoptimizan-shopify-components  |  Autor: Seoptimizan
+  Dawn: mínimo 15.2.0  |  Requiere core: no
+  No se edita en el repo de un cliente: se corrige en la librería y se actualiza.
+
+  Sección: precio final con el precio original tachado para descuentos
+  automáticos por porcentaje de una colección. No modifica ningún archivo de Dawn.
+  Uso: Personalizar tema > grupo Header > Agregar sección > "Precio con descuento".
+
+  Shopify no deja leer los descuentos automáticos desde Liquid (solo se aplican en
+  el carrito), así que el porcentaje, la colección y las fechas se escriben en un
+  metacampo de la tienda (seoptimizan.descuentos, tipo JSON) que debe coincidir con
+  el descuento creado en el admin. Ver README del componente.
+
+  Esta sección solo entrega la configuración al JS (atributos del elemento
+  <seopt-price-discount>); el JS decora los precios de las tarjetas y de la ficha.
+  El HTML original de Dawn no cambia: el precio nativo sigue en la página, oculto
+  mientras el descuento está activo. El JSON-LD de Google conserva el precio sin
+  descuento.
+
+  Archivos: assets/seopt-precio-descuento.css y .js (el JS se carga con defer).
+  Variables CSS y personalización: ver README del componente.
+{%- endcomment -%}
+
+{%- liquid
+  assign cfg = shop.metafields.seoptimizan.descuentos.value
+  assign rules = cfg.reglas
+  if settings.currency_code_enabled
+    assign probe = 123456789 | money_with_currency
+  else
+    assign probe = 123456789 | money
+  endif
+-%}
+
+{%- if section.settings.enabled and rules.size > 0 -%}
+  {{ 'seopt-precio-descuento.css' | asset_url | stylesheet_tag }}
+
+  <seopt-price-discount
+    id="SeoptPriceDiscount-{{ section.id }}"
+    data-rules="{{ rules | json | escape }}"
+    data-probe="{{ probe | strip_html | escape }}"
+    data-original-label="{{ section.settings.original_label | escape }}"
+    data-final-label="{{ section.settings.final_label | escape }}"
+    data-show-badge="{{ section.settings.show_badge }}"
+    data-skip-on-sale="{{ section.settings.skip_on_sale }}"
+  ></seopt-price-discount>
+
+  <script src="{{ 'seopt-precio-descuento.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{%- if request.design_mode -%}
+  <p style="margin:0;padding:0.8rem 1.6rem;font-size:1.2rem;text-align:center;opacity:0.7;">
+    {%- if section.settings.enabled == false -%}
+      Precio con descuento: desactivado.
+    {%- elsif rules.size > 0 -%}
+      Precio con descuento: {{ rules.size }} regla(s) leída(s) del metacampo de la tienda. No se muestra nada aquí.
+    {%- else -%}
+      Precio con descuento: falta el metacampo de la tienda seoptimizan.descuentos (JSON con la lista "reglas").
+    {%- endif -%}
+  </p>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Precio con descuento",
+  "tag": "div",
+  "class": "seopt-precio-descuento-section",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enabled",
+      "label": "Activar el precio con descuento",
+      "default": true,
+      "info": "Apagarlo muestra los precios originales de Shopify sin quitar la sección."
+    },
+    {
+      "type": "paragraph",
+      "content": "Las reglas (colección, porcentaje y fechas) se escriben en el metacampo de la tienda seoptimizan.descuentos, en Configuración > Datos personalizados > Tienda."
+    },
+    {
+      "type": "text",
+      "id": "original_label",
+      "label": "Texto accesible del precio original",
+      "default": "Precio original"
+    },
+    {
+      "type": "text",
+      "id": "final_label",
+      "label": "Texto accesible del precio con descuento",
+      "default": "Precio con descuento"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_badge",
+      "label": "Mostrar la etiqueta del porcentaje",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "skip_on_sale",
+      "label": "No aplicar a productos con precio tachado",
+      "default": false,
+      "info": "Apagado: los productos que ya tienen precio tachado también reciben el descuento (se muestra el precio de lista tachado y el precio final). Encendido: se dejan como los pinta Shopify."
+    }
+  ],
+  "presets": [
+    { "name": "Precio con descuento" }
+  ]
+}
+{% endschema %}
