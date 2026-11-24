@@ -1,0 +1,50 @@
+{%- liquid
+  assign materials_mf = product.metafields.custom.materiales
+  assign care_mf      = product.metafields.custom.care_instructions
+
+  if materials_mf
+    assign fabrics = materials_mf.value
+  endif
+
+  if care_mf
+    assign cares = care_mf.value
+  endif
+-%}
+
+{%- if fabrics or cares -%}
+<section class="product-materiales-care">
+  <div class="pmc-grid">
+
+    {%- if fabrics -%}
+      <div class="pmc-block">
+        <h3 class="pmc-title">Fabric & Composition</h3>
+
+        <ul class="pmc-list" role="list">
+          {%- for item in fabrics -%}
+            {%- assign label = item | strip -%}
+            {%- if label != '' -%}
+              <li class="pmc-pill">{{ label }}</li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+    {%- endif -%}
+
+    {%- if cares -%}
+      <div class="pmc-block">
+        <h3 class="pmc-title">Cuidados</h3>
+
+        <ul class="pmc-care-list" role="list">
+          {%- for care in cares -%}
+            {%- assign line = care | strip -%}
+            {%- if line != '' -%}
+              <li>{{ line }}</li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+{%- endif -%}

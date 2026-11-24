@@ -1,0 +1,64 @@
+{% comment %}
+  Sección: Black Friday Ribbon (marquesina)
+  Autor: Seoptimizan
+{% endcomment %}
+
+<section class="bf-ribbon">
+  <div class="bf-ribbon__track">
+    <div class="bf-ribbon__inner">
+      {%- if section.blocks.size > 0 -%}
+        {%- comment -%}
+          Si hay bloques, usamos los textos que pongas en el editor
+          y los duplicamos 2 veces para que el scroll sea continuo
+        {%- endcomment -%}
+        {% for i in (1..2) %}
+          {% for block in section.blocks %}
+            <span class="bf-ribbon__item" {{ block.shopify_attributes }}>
+              {{ block.settings.text }}
+            </span>
+          {% endfor %}
+        {% endfor %}
+      {%- else -%}
+        {%- comment -%}
+          Si no hay bloques, usamos estos textos por defecto
+        {%- endcomment -%}
+        {% assign textos = "NEW ARRIVALS, DESIGNED FOR COMFORT, MADE TO MOVE, LIGHTWEIGHT FEEL, EVERYDAY CONFIDENCE, ULTRA SOFT FABRIC, BOLD STYLE, FEEL THE DIFFERENCE, SHOP THE NEW TRAVELERS, FIND YOUR PERFECT FIT" | split: "," %}
+        {% for i in (1..2) %}
+          {% for texto in textos %}
+            <span class="bf-ribbon__item">
+              {{ texto }}
+            </span>
+          {% endfor %}
+        {% endfor %}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Black Friday ribbon",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Texto del ribbon",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texto",
+          "default": "🔥 BLACK FRIDAY · DESCUENTOS ESPECIALES HOY"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 20,
+  "presets": [
+    {
+      "name": "Black Friday ribbon",
+      "category": "Promotional"
+    }
+  ]
+}
+{% endschema %}

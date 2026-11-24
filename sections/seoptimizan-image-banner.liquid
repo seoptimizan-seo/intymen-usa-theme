@@ -1,0 +1,488 @@
+{% comment %}
+  Section: Seoptimizan - Hero Image/Video Banner (Dawn compatible)
+  - Background: Image (desktop/mobile) OR Video (Shopify-hosted mp4) OR YouTube/Vimeo
+  - Overlay gradient: two colors + separate opacity for each color + start/end stops + angle
+  - Scoped CSS + optional custom CSS
+  Author: Seoptimizan
+{% endcomment %}
+
+{%- liquid
+  assign mode = section.settings.background_mode
+
+  assign desktop_image = section.settings.image_desktop
+  assign mobile_image  = section.settings.image_mobile
+
+  assign overlay_alpha_start = section.settings.overlay_opacity_start | times: 0.01
+  assign overlay_alpha_end   = section.settings.overlay_opacity_end   | times: 0.01
+
+  assign overlay_c1 = section.settings.overlay_color_1 | color_modify: 'alpha', overlay_alpha_start
+  assign overlay_c2 = section.settings.overlay_color_2 | color_modify: 'alpha', overlay_alpha_end
+
+  assign video_file = section.settings.video_file
+  assign video_url  = section.settings.video_url
+-%}
+
+<section id="Banner-{{ section.id }}" class="seopt-hero">
+  <div class="seopt-hero__media">
+
+    {%- comment -%} =========================
+      BACKGROUND: VIDEO (Shopify hosted)
+    ========================= {%- endcomment -%}
+    {%- if mode == 'video' and video_file != blank -%}
+      <div class="seopt-hero__video seopt-hero__video--shopify" aria-hidden="true">
+        {{
+          video_file
+          | video_tag:
+            autoplay: true,
+            loop: true,
+            muted: true,
+            controls: false,
+            playsinline: true,
+            preload: 'metadata',
+            class: 'seopt-hero__video-el'
+        }}
+      </div>
+
+    {%- comment -%} =========================
+      BACKGROUND: VIDEO URL (YouTube/Vimeo) - menos recomendado
+    ========================= {%- endcomment -%}
+    {%- elsif mode == 'video_url' and video_url != blank -%}
+      <div class="seopt-hero__video seopt-hero__video--embed" aria-hidden="true">
+        {%- if video_url.type == 'youtube' -%}
+          <iframe
+            class="seopt-hero__iframe"
+            src="https://www.youtube.com/embed/{{ video_url.id }}?autoplay=1&mute=1&controls=0&loop=1&playlist={{ video_url.id }}&playsinline=1&modestbranding=1&rel=0"
+            title="Background video"
+            frameborder="0"
+            allow="autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen
+            loading="lazy"></iframe>
+        {%- elsif video_url.type == 'vimeo' -%}
+          <iframe
+            class="seopt-hero__iframe"
+            src="https://player.vimeo.com/video/{{ video_url.id }}?autoplay=1&muted=1&background=1&loop=1&playsinline=1"
+            title="Background video"
+            frameborder="0"
+            allow="autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen
+            loading="lazy"></iframe>
+        {%- endif -%}
+      </div>
+
+    {%- comment -%} =========================
+      BACKGROUND: IMAGES (default)
+    ========================= {%- endcomment -%}
+    {%- else -%}
+      {%- if mobile_image != blank -%}
+        {{
+          mobile_image
+          | image_url: width: 2000
+          | image_tag:
+            loading: 'lazy',
+            class: 'seopt-hero__img seopt-hero__img--mobile',
+            widths: '375, 550, 750, 990, 1200, 1500, 2000',
+            sizes: '(max-width: 749px) 100vw, 0px'
+        }}
+      {%- endif -%}
+
+      {%- if desktop_image != blank -%}
+        {{
+          desktop_image
+          | image_url: width: 3000
+          | image_tag:
+            loading: 'lazy',
+            class: 'seopt-hero__img seopt-hero__img--desktop',
+            widths: '750, 990, 1200, 1500, 2000, 2400, 3000',
+            sizes: '(min-width: 750px) 100vw, 0px'
+        }}
+      {%- endif -%}
+
+      {%- if mobile_image == blank and desktop_image == blank -%}
+        <div class="seopt-hero__placeholder">
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- comment -%} Overlay always above background {%- endcomment -%}
+    <div class="seopt-hero__overlay" aria-hidden="true"></div>
+
+    {%- if section.settings.heading != blank or section.settings.text != blank or section.settings.button_label != blank -%}
+      <div class="seopt-hero__content page-width">
+        <div class="seopt-hero__content-inner">
+          {%- if section.settings.heading != blank -%}
+            <h2 class="seopt-hero__heading">{{ section.settings.heading | escape }}</h2>
+          {%- endif -%}
+
+          {%- if section.settings.text != blank -%}
+            <div class="seopt-hero__text rte">{{ section.settings.text }}</div>
+          {%- endif -%}
+
+          {%- if section.settings.button_label != blank -%}
+            {%- if section.settings.button_link != blank -%}
+              <a class="button" href="{{ section.settings.button_link }}">
+                {{ section.settings.button_label | escape }}
+              </a>
+            {%- else -%}
+              <span class="button disabled" aria-disabled="true">
+                {{ section.settings.button_label | escape }}
+              </span>
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- if section.settings.custom_css != blank -%}
+    <style>
+      /* Custom CSS (Author: Seoptimizan) - Scoped */
+      #Banner-{{ section.id }} {
+        {{ section.settings.custom_css }}
+      }
+    </style>
+  {%- endif -%}
+
+  <style>
+    div:empty {
+    display: block;
+    }
+
+    h2.seopt-hero__heading {
+    color: white;
+    font-size: 80px;
+    font-weight: 900;
+    }
+    /* Base scoped CSS (Author: Seoptimizan) */
+    #Banner-{{ section.id }}{
+      --seopt-overlay-angle: {{ section.settings.overlay_angle }}deg;
+      --seopt-overlay-c1: {{ overlay_c1 }};
+      --seopt-overlay-c2: {{ overlay_c2 }};
+      --seopt-overlay-stop-start: {{ section.settings.overlay_stop_start }}%;
+      --seopt-overlay-stop-end: {{ section.settings.overlay_stop_end }}%;
+
+      --seopt-min-height-mobile: {{ section.settings.min_height_mobile }}px;
+      --seopt-min-height-desktop: {{ section.settings.min_height_desktop }}px;
+      --seopt-content-max: {{ section.settings.content_max_width }}px;
+      --seopt-content-align: {{ section.settings.content_alignment }};
+      --seopt-border-radius: {{ section.settings.border_radius }}px;
+    }
+
+    #Banner-{{ section.id }} .seopt-hero__media{
+      position: relative;
+      min-height: var(--seopt-min-height-mobile);
+      overflow: hidden;
+      border-radius: var(--seopt-border-radius);
+    }
+
+    /* Images and placeholder fill */
+    #Banner-{{ section.id }} .seopt-hero__img,
+    #Banner-{{ section.id }} .seopt-hero__placeholder{
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      object-position: center center;
+    }
+
+    /* Mobile-first visibility */
+    #Banner-{{ section.id }} .seopt-hero__img--desktop{ display: none; }
+    #Banner-{{ section.id }} .seopt-hero__img--mobile{ display: block; }
+
+    /* Dawn breakpoint */
+    @media screen and (min-width: 750px){
+      #Banner-{{ section.id }} .seopt-hero__media{ min-height: var(--seopt-min-height-desktop); }
+      #Banner-{{ section.id }} .seopt-hero__img--desktop{ display: block; }
+      #Banner-{{ section.id }} .seopt-hero__img--mobile{ display: none; }
+    }
+
+    /* Video backgrounds */
+    #Banner-{{ section.id }} .seopt-hero__video{
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #Banner-{{ section.id }} .seopt-hero__video-el,
+    #Banner-{{ section.id }} .seopt-hero__iframe{
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* For iframes: cover effect */
+    #Banner-{{ section.id }} .seopt-hero__iframe{
+      position: absolute;
+      inset: 0;
+      transform: scale(1.15);
+    }
+
+    /* Overlay: two “darkness levels” controlled by the user */
+    #Banner-{{ section.id }} .seopt-hero__overlay{
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(
+        var(--seopt-overlay-angle),
+        var(--seopt-overlay-c1) var(--seopt-overlay-stop-start),
+        var(--seopt-overlay-c2) var(--seopt-overlay-stop-end)
+      );
+      pointer-events: none;
+    }
+
+    /* Content above overlay */
+    #Banner-{{ section.id }} .seopt-hero__content{
+      position:absolute;
+      inset:0;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: var(--seopt-content-align);
+      padding: 2rem 0;
+    }
+
+    #Banner-{{ section.id }} .seopt-hero__content-inner{
+      max-width: var(--seopt-content-max);
+      width: 100%;
+      padding: 2.4rem;
+    }
+
+    #Banner-{{ section.id }} .seopt-hero__heading{ margin: 0 0 .8rem 0; }
+    #Banner-{{ section.id }} .seopt-hero__text{ margin-bottom: 1.2rem; }
+
+    #Banner-{{ section.id }} .button.disabled{
+      opacity: .6;
+      pointer-events: none;
+    }
+
+    @media screen and (min-width: 990px){
+      #Banner-{{ section.id }} .seopt-hero__content-inner{ padding: 3.2rem; }
+    }
+
+    @media screen and (min-width: 1200px){
+      #Banner-{{ section.id }} .seopt-hero__content-inner{ padding: 4rem; }
+    }
+  </style>
+</section>
+
+{% schema %}
+{
+  "name": "Seoptimizan - Hero",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "background_mode",
+      "label": "Tipo de background",
+      "default": "image",
+      "options": [
+        { "value": "image", "label": "Imagen (desktop/mobile)" },
+        { "value": "video", "label": "Video MP4 (Shopify)" },
+        { "value": "video_url", "label": "Video URL (YouTube/Vimeo)" }
+      ]
+    },
+
+    {
+      "type": "header",
+      "content": "Background - Imágenes"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Imagen Desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Imagen Mobile"
+    },
+
+    {
+      "type": "header",
+      "content": "Background - Video (Shopify)"
+    },
+    {
+      "type": "video",
+      "id": "video_file",
+      "label": "Video (MP4 subido a Shopify)"
+    },
+
+    {
+      "type": "header",
+      "content": "Background - Video URL (YouTube/Vimeo)"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "accept": ["youtube", "vimeo"],
+      "label": "URL de video"
+    },
+
+    {
+      "type": "header",
+      "content": "Contenido (opcional)"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título",
+      "default": "Banner de imagen"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Texto",
+      "default": "<p>Seguridad y presencia que se siente</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Etiqueta de botón"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Link del botón"
+    },
+
+    {
+      "type": "header",
+      "content": "Overlay (gradiente controlable)"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color_1",
+      "label": "Color 1 (inicio)",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity_start",
+      "label": "Opacidad Color 1 (%)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "overlay_stop_start",
+      "label": "Posición Color 1 (%)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "overlay_color_2",
+      "label": "Color 2 (final)",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity_end",
+      "label": "Opacidad Color 2 (%)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "overlay_stop_end",
+      "label": "Posición Color 2 (%)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "overlay_angle",
+      "label": "Ángulo del gradiente",
+      "min": 0,
+      "max": 360,
+      "step": 5,
+      "default": 180
+    },
+
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "min_height_mobile",
+      "label": "Altura mínima mobile (px)",
+      "min": 220,
+      "max": 900,
+      "step": 10,
+      "default": 360
+    },
+    {
+      "type": "range",
+      "id": "min_height_desktop",
+      "label": "Altura mínima desktop (px)",
+      "min": 280,
+      "max": 1200,
+      "step": 10,
+      "default": 520
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "label": "Ancho máximo contenido (px)",
+      "min": 320,
+      "max": 900,
+      "step": 10,
+      "default": 720
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "label": "Alineación horizontal del contenido",
+      "default": "center",
+      "options": [
+        { "value": "flex-start", "label": "Izquierda" },
+        { "value": "center", "label": "Centro" },
+        { "value": "flex-end", "label": "Derecha" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Borde redondeado (px)",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "default": 0
+    },
+
+    {
+      "type": "header",
+      "content": "CSS exclusivo (opcional)"
+    },
+    {
+      "type": "textarea",
+      "id": "custom_css",
+      "label": "CSS (se inserta dentro de #Banner-SECTION_ID { ... })",
+      "info": "Ej: margin-top: 20px; border: 1px solid red;"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Seoptimizan - Hero Banner (Image/Video)"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,43 @@
+{%- comment -%}
+---------------------------------------------------------------------
+SYNC MATERIALS → TAGS
+Implementado por SEOPTIMIZAN (2025)
+
+Objetivo:
+Tomar los valores del metafield `custom.materiales` (lista)
+y convertirlos automáticamente en tags del producto para que
+el buscador nativo de Shopify pueda indexarlos.
+
+Notas:
+- Esto no modifica los tags en el admin.
+- Los tags se inyectan dinámicamente en tiempo de render.
+- Seguro, sin apps, sin JS, sin afectar URLs.
+---------------------------------------------------------------------
+{%- endcomment -%}
+
+{%- assign materials_list = product.metafields.custom.materiales -%}
+
+{%- if materials_list -%}
+  <div class="sync-material-tags" aria-hidden="true" style="display:none">
+    {%- for m in materials_list.value -%}
+      {%- assign clean = m 
+        | strip
+        | downcase
+        | remove: " "
+        | remove: "á"
+        | remove: "é"
+        | remove: "í"
+        | remove: "ó"
+        | remove: "ú"
+        | remove: "ñ"
+        | replace: "á","a"
+        | replace: "é","e"
+        | replace: "í","i"
+        | replace: "ó","o"
+        | replace: "ú","u"
+        | replace: "ñ","n"
+      -%}
+      {{ clean }}
+    {%- endfor -%}
+  </div>
+{%- endif -%}
