@@ -1,1 +1,735 @@
-{"sections":{"custom_liquid_aUkkRt":{"type":"custom-liquid","custom_css":[".home-h1 {font-size: 12px; text-align: center;}"],"name":"t:sections.custom-liquid.presets.name","settings":{"custom_liquid":"<h2 class=\"home-h1\">\n  Intymen | Redefining Men’s Underwear with Design, Comfort, and Confidence<\/h2>","color_scheme":"","padding_top":4,"padding_bottom":4}},"seoptimizan_image_banner_CbYXVc":{"type":"seoptimizan-image-banner","disabled":true,"custom_css":["a.button {background-color: black; border: 0px; font-size: 20px; font-weight: 700; color: white;}","h2 {font-weight: 900 !important; font-family: \"arial Black\"; line-height: 30px; letter-spacing: 1px;}",".button {margin-top: 120px;}",".seopt-hero__media {display: block;}","h2 {color: #d29368; font-size: 90px; margin-bottom: 10px !important;}",".seopt-hero__text p {color: #000; font-weight: 500; margin-bottom: 0px !important; font-family: \"arial\"; font-size: 40px;}",".button {margin-top: 0px;}"],"name":"Seoptimizan - Hero Banner (Image\/Video)","settings":{"background_mode":"image","image_desktop":"shopify:\/\/shop_images\/banner-agust-desktop_1.jpg","image_mobile":"shopify:\/\/shop_images\/banner-agust-mobile_1.jpg","video_url":"","heading":"","text":"","button_label":"","button_link":"shopify:\/\/collections\/new-arrivals","overlay_color_1":"#ffffff","overlay_opacity_start":0,"overlay_stop_start":70,"overlay_color_2":"#5a5a5a","overlay_opacity_end":30,"overlay_stop_end":100,"overlay_angle":360,"min_height_mobile":550,"min_height_desktop":600,"content_max_width":800,"content_alignment":"center","border_radius":0,"custom_css":"@media (max-width: 1480px) and (min-width: 750px) {\n  .seopt-hero__content {\n    overflow: hidden;\nalign-items: center !important;\n  }\n\n  \/*.seopt-hero__content-inner {\n    border: none !important;\n    background: rgba(255, 255, 255, 0.72);\n    max-width: 900px;\n    width: calc(100% - 48px);\n    margin: 0 auto;\n    padding: 24px 32px;\n    box-sizing: border-box;\n  }*\/\n}\n@media (max-width: 750px) {\n  h2 {\n    font-size: 50px !important;\n  }\n.seopt-hero__text p {\n  font-size: 30px !important;\n}\n  .seopt-hero__content {\n    overflow: hidden;\nalign-items: center !important;\n  }\n}"}},"seoptimizan_image_banner_BfR9Cy":{"type":"seoptimizan-image-banner","disabled":true,"custom_css":["a.button {background-color: black; border: 0px; font-size: 20px; font-weight: 700; color: white;}","h2 {font-weight: 900 !important; font-family: \"arial Black\"; line-height: 30px; letter-spacing: 1px;}",".button {margin-top: 120px;}",".seopt-hero__media {display: block;}","h2 {color: #d29368; font-size: 90px; margin-bottom: 10px !important;}",".seopt-hero__text p {color: #000; font-weight: 500; margin-bottom: 0px !important; font-family: \"arial\"; font-size: 40px;}",".button {margin-top: 0px;}"],"name":"Seoptimizan - Hero Banner (Image\/Video)","settings":{"background_mode":"image","image_desktop":"shopify:\/\/shop_images\/banner-sexy-mens-underwear-intymen-new-drops-travelers-desktop.jpg","image_mobile":"shopify:\/\/shop_images\/banner-sexy-mens-underwear-intymen-nuew-drops-travelers-mobile.jpg","video_url":"","heading":"TRAVELERS","text":"<p>NEW ARRIVALS<\/p>","button_label":"VIEW COLLECTION","button_link":"shopify:\/\/collections\/new-arrivals","overlay_color_1":"#ffffff","overlay_opacity_start":0,"overlay_stop_start":70,"overlay_color_2":"#5a5a5a","overlay_opacity_end":30,"overlay_stop_end":100,"overlay_angle":360,"min_height_mobile":380,"min_height_desktop":550,"content_max_width":800,"content_alignment":"center","border_radius":0,"custom_css":"@media (max-width: 1480px) and (min-width: 750px) {\n  .seopt-hero__content {\n    overflow: hidden;\nalign-items: center !important;\n  }\n\n  \/*.seopt-hero__content-inner {\n    border: none !important;\n    background: rgba(255, 255, 255, 0.72);\n    max-width: 900px;\n    width: calc(100% - 48px);\n    margin: 0 auto;\n    padding: 24px 32px;\n    box-sizing: border-box;\n  }*\/\n}\n@media (max-width: 750px) {\n  h2 {\n    font-size: 50px !important;\n  }\n.seopt-hero__text p {\n  font-size: 30px !important;\n}\n  .seopt-hero__content {\n    overflow: hidden;\nalign-items: center !important;\n  }\n}"}},"seoptimizan_hero_slider_YdMtQg":{"type":"seoptimizan-hero-slider","blocks":{"slide_NrXxLQ":{"type":"slide","settings":{"background_mode":"image","image_desktop":"shopify:\/\/shop_images\/intymen-sexy-mens-underwear-new-arrivals-desktop.jpg","image_mobile":"shopify:\/\/shop_images\/intymen-sexy-mens-underwear-new-arrivals-mobile.jpg","video_url":"","heading":"Ballin","text":"<p>Sexy New Arrivals<\/p>","button_label":"VIEW COLLECTION","button_link":"shopify:\/\/collections\/sexy-mens-underwear-new-arrivals","overlay_color_1":"#121212","overlay_opacity_start":10,"overlay_stop_start":70,"overlay_color_2":"#121212","overlay_opacity_end":80,"overlay_stop_end":100,"overlay_angle":360,"content_max_width":720,"content_alignment":"center","content_vertical_alignment":"center","text_alignment":"center"}},"slide_JgcGWX":{"type":"slide","settings":{"background_mode":"image","image_desktop":"shopify:\/\/shop_images\/intymen-mens-underwear-new-arrivals-desktop.jpg","image_mobile":"shopify:\/\/shop_images\/intymen-mens-underwear-new-arrivals-mobile.jpg","video_url":"","heading":"TOURIST","text":"<p>New Arrivals<\/p>","button_label":"VIEW COLLECTION","button_link":"shopify:\/\/collections\/new-arrivals","overlay_color_1":"#121212","overlay_opacity_start":10,"overlay_stop_start":70,"overlay_color_2":"#121212","overlay_opacity_end":80,"overlay_stop_end":100,"overlay_angle":360,"content_max_width":720,"content_alignment":"flex-start","content_vertical_alignment":"center","text_alignment":"center"}}},"block_order":["slide_NrXxLQ","slide_JgcGWX"],"disabled":true,"custom_css":["a.button {background-color: white; border: 0px; font-size: 20px; font-weight: 700; color: black;}","h2 {font-weight: 600; line-height: 80px; letter-spacing: -5px;}"," \/*.seopt-hero__content-inner {border: 2px solid white; border-radius: 0px !important;}*\/.button {margin-top: 120px;}",".seopt-hero__media {display: block;}","h2 {color: black; font-family: times; font-size: 110px;}","p {color: black; font-weight: 500; margin-bottom: 0px !important; font-size: 40px;}",".button {margin-top: 0px;}"],"name":"Seoptimizan - Hero Slider PRO","settings":{"enable_autoplay":true,"autoplay_speed":5,"show_arrows":true,"show_dots":true,"min_height_mobile":670,"min_height_desktop":550,"border_radius":0,"heading_color":"#121212","text_color":"#121212","heading_size_mobile":48,"heading_size_desktop":80,"custom_css":"@media (max-width: 1480px) and (min-width: 750px) {\n  .seopt-hero__content {\n    overflow: hidden;\nalign-items: flex-end !important;\n  }\n}\n@media (max-width: 750px) {\n  h2 {\n    font-size: 70px !important;\n  }\n  .seopt-hero__content {\n    overflow: hidden;\nalign-items: start !important;\npadding-top: 110px !important;\n  }\n}\n  .seopt-hero__content-inner {\n    border: none !important;\n    background: rgba(255, 255, 255, 0.72);\n    max-width: 900px;\n    width: calc(100% - 48px);\n    margin: 0 auto;\n    padding: 24px 32px;\n    box-sizing: border-box;\n  }"}},"seoptimizan_image_banner_rjmgJq":{"type":"seoptimizan-image-banner","disabled":true,"custom_css":["a.button {background-color: white; border: 0px; font-size: 20px; font-weight: 700; color: black;}","h2 {font-weight: 900 !important; font-family: \"arial Black\"; line-height: 30px; letter-spacing: 1px;}",".button {margin-top: 120px;}",".seopt-hero__media {display: block;}","h2 {color: #ccc; font-size: 90px; margin-bottom: 10px !important;}",".seopt-hero__text p {color: #fff; font-weight: 300; margin-bottom: 0px !important; font-size: 40px;}",".button {margin-top: 0px;}"],"name":"Seoptimizan - Hero Banner (Image\/Video)","settings":{"background_mode":"image","image_desktop":"shopify:\/\/shop_images\/intymen-mens-underwear-new-arrivals-desktop-snakemood_d8ac50f8-6c9c-4464-be80-0cc2fbc002c5.jpg","image_mobile":"shopify:\/\/shop_images\/intymen-mens-underwear-new-arrivals-desktop-snakemood-mobile.jpg","video_url":"","heading":"SNAKEMOOD","text":"<p>NEW ARRIVALS<\/p>","button_label":"VIEW COLLECTION","button_link":"shopify:\/\/collections\/sexy-mens-underwear-new-arrivals","overlay_color_1":"#121212","overlay_opacity_start":0,"overlay_stop_start":80,"overlay_color_2":"#121212","overlay_opacity_end":80,"overlay_stop_end":100,"overlay_angle":360,"min_height_mobile":670,"min_height_desktop":550,"content_max_width":800,"content_alignment":"center","border_radius":0,"custom_css":"@media (max-width: 1480px) and (min-width: 750px) {\n  .seopt-hero__content {\n    overflow: hidden;\nalign-items: center !important;\n  }\n\n  \/*.seopt-hero__content-inner {\n    border: none !important;\n    background: rgba(255, 255, 255, 0.72);\n    max-width: 900px;\n    width: calc(100% - 48px);\n    margin: 0 auto;\n    padding: 24px 32px;\n    box-sizing: border-box;\n  }*\/\n}\n@media (max-width: 750px) {\n  h2 {\n    font-size: 50px !important;\n  }\n.seopt-hero__text p {\n  font-size: 30px !important;\n}\n  .seopt-hero__content {\n    overflow: hidden;\nalign-items: center !important;\n  }\n}"}},"seoptimizan_image_banner_JHNdnP":{"type":"seoptimizan-image-banner","custom_css":[],"name":"Seoptimizan - Hero Banner (Image\/Video)","settings":{"background_mode":"image","image_desktop":"shopify:\/\/shop_images\/intymen-mens-underwear-new-arrivals-desktop-black-_-white.jpg","image_mobile":"shopify:\/\/shop_images\/intymen-mens-underwear-new-arrivals-mobile-black-_-white.jpg","video_url":"","heading":"BLACK & WHITE","text":"<p>NEW ARRIVALS<\/p>","button_label":"VIEW COLLECTION","button_link":"shopify:\/\/collections\/new-arrivals","overlay_color_1":"#121212","overlay_opacity_start":0,"overlay_stop_start":80,"overlay_color_2":"#121212","overlay_opacity_end":80,"overlay_stop_end":100,"overlay_angle":360,"min_height_mobile":670,"min_height_desktop":550,"content_max_width":800,"content_alignment":"center","border_radius":0,"custom_css":".seopt-hero__heading .bw-black {\n  color: transparent !important;\n  -webkit-text-fill-color: transparent !important;\n\n  -webkit-text-stroke: 2px #ffffff;\n  text-stroke: 2px #ffffff;\n}"}},"custom_liquid_ezEEA4":{"type":"custom-liquid","name":"t:sections.custom-liquid.presets.name","settings":{"custom_liquid":"<style>\n  .seopt-hero__heading .bw-black {\n    color: #111111 !important;\n    -webkit-text-fill-color: #111111 !important;\n  }\n\n  .seopt-hero__heading {\n    color: #ffffff !important;\n    -webkit-text-fill-color: #ffffff !important;\n  }\n<\/style>\n\n<script>\n(function () {\n\n  function styleBlackWhiteTitle() {\n\n    const titles = document.querySelectorAll('.seopt-hero__heading');\n\n    titles.forEach(function(title) {\n\n      const text = title.textContent.trim();\n\n      if (text.toUpperCase() === 'BLACK & WHITE') {\n\n        title.innerHTML =\n          'BLACK & <span class=\"bw-black\">WHITE<\/span>';\n\n      }\n\n    });\n\n  }\n\n  \/* Carga normal *\/\n  if (document.readyState === 'loading') {\n    document.addEventListener('DOMContentLoaded', styleBlackWhiteTitle);\n  } else {\n    styleBlackWhiteTitle();\n  }\n\n  \/* Shopify Theme Editor *\/\n  document.addEventListener('shopify:section:load', styleBlackWhiteTitle);\n\n})();\n<\/script>","color_scheme":"","padding_top":0,"padding_bottom":0}},"black_friday_ribon_XqJE8L":{"type":"black-friday-ribon","name":"Black Friday ribbon","settings":{}},"featured_collection_QitER3":{"type":"featured-collection","custom_css":[],"name":"t:sections.featured-collection.presets.name","settings":{"collection":"new-arrivals","products_to_show":4,"title":"BLACK & WHITE - New Arrivals","heading_size":"h2","description":"","show_description":false,"description_style":"body","columns_desktop":4,"enable_desktop_slider":false,"full_width":false,"show_view_all":true,"view_all_style":"solid","color_scheme":"","image_ratio":"square","image_shape":"default","show_secondary_image":true,"show_vendor":false,"show_rating":true,"quick_add":"standard","columns_mobile":"2","swipe_on_mobile":false,"padding_top":36,"padding_bottom":36}},"featured_collection_HVawPm":{"type":"featured-collection","custom_css":[],"name":"t:sections.featured-collection.presets.name","settings":{"collection":"sexy-mens-underwear-new-arrivals","products_to_show":9,"title":"SNAKEMOOD - Sexy New Arrivals","heading_size":"h2","description":"","show_description":false,"description_style":"body","columns_desktop":4,"enable_desktop_slider":false,"full_width":false,"show_view_all":true,"view_all_style":"solid","color_scheme":"","image_ratio":"square","image_shape":"default","show_secondary_image":true,"show_vendor":false,"show_rating":true,"quick_add":"standard","columns_mobile":"2","swipe_on_mobile":false,"padding_top":36,"padding_bottom":36}},"collection_list_XcXXdE":{"type":"collection-list","blocks":{"featured_collection_FUeYPj":{"type":"featured_collection","settings":{"collection":"new-arrivals"}},"featured_collection_Rh6U4C":{"type":"featured_collection","settings":{"collection":"essentials-mens-underwear"}},"featured_collection_c7J4qk":{"type":"featured_collection","settings":{"collection":"mens-briefs"}},"featured_collection_6QXFXn":{"type":"featured_collection","settings":{"collection":"mens-bikinis"}},"featured_collection_KaF9MV":{"type":"featured_collection","settings":{"collection":"boxer-briefs"}},"featured_collection_qyLA9g":{"type":"featured_collection","settings":{"collection":"jockstraps"}},"featured_collection_CiQ8MQ":{"type":"featured_collection","settings":{"collection":"mens-thongs"}},"featured_collection_4gXbUq":{"type":"featured_collection","settings":{"collection":"sexy-mens-underwear"}}},"block_order":["featured_collection_FUeYPj","featured_collection_Rh6U4C","featured_collection_c7J4qk","featured_collection_6QXFXn","featured_collection_KaF9MV","featured_collection_qyLA9g","featured_collection_CiQ8MQ","featured_collection_4gXbUq"],"custom_css":[".card-wrapper.animate-arrow.collection-card-wrapper::before {display: none;}"],"name":"t:sections.collection-list.presets.name","settings":{"title":"Underwear for Men","heading_size":"h1","image_ratio":"adapt","columns_desktop":4,"color_scheme":"","show_view_all":false,"columns_mobile":"2","swipe_on_mobile":false,"padding_top":60,"padding_bottom":72}},"featured_collection_Dbwcfz":{"type":"featured-collection","custom_css":[],"name":"t:sections.featured-collection.presets.name","settings":{"collection":"travelers","products_to_show":5,"title":"Travelers","heading_size":"h2","description":"","show_description":false,"description_style":"body","columns_desktop":4,"enable_desktop_slider":false,"full_width":false,"show_view_all":true,"view_all_style":"solid","color_scheme":"","image_ratio":"portrait","image_shape":"default","show_secondary_image":true,"show_vendor":false,"show_rating":true,"quick_add":"standard","columns_mobile":"2","swipe_on_mobile":false,"padding_top":36,"padding_bottom":36}},"featured_collection_8MtMMR":{"type":"featured-collection","custom_css":[],"name":"t:sections.featured-collection.presets.name","settings":{"collection":"mon-cheri","products_to_show":9,"title":"MON CHERI - Lingerie","heading_size":"h2","description":"","show_description":false,"description_style":"body","columns_desktop":5,"enable_desktop_slider":false,"full_width":false,"show_view_all":true,"view_all_style":"solid","color_scheme":"","image_ratio":"square","image_shape":"default","show_secondary_image":true,"show_vendor":false,"show_rating":true,"quick_add":"standard","columns_mobile":"2","swipe_on_mobile":false,"padding_top":36,"padding_bottom":36}},"featured_collection_XTBz9L":{"type":"featured-collection","custom_css":[],"name":"t:sections.featured-collection.presets.name","settings":{"collection":"tourist","products_to_show":5,"title":"Tourist Collection","heading_size":"h2","description":"","show_description":false,"description_style":"body","columns_desktop":4,"enable_desktop_slider":false,"full_width":false,"show_view_all":true,"view_all_style":"solid","color_scheme":"","image_ratio":"portrait","image_shape":"default","show_secondary_image":true,"show_vendor":false,"show_rating":true,"quick_add":"standard","columns_mobile":"2","swipe_on_mobile":false,"padding_top":36,"padding_bottom":36}},"featured_collection_QkGTXb":{"type":"featured-collection","custom_css":[],"name":"t:sections.featured-collection.presets.name","settings":{"collection":"ballin","products_to_show":9,"title":"Ballin Collection - Sexy Mens Underwear","heading_size":"h2","description":"","show_description":false,"description_style":"body","columns_desktop":4,"enable_desktop_slider":false,"full_width":false,"show_view_all":true,"view_all_style":"solid","color_scheme":"","image_ratio":"square","image_shape":"default","show_secondary_image":true,"show_vendor":false,"show_rating":true,"quick_add":"standard","columns_mobile":"2","swipe_on_mobile":false,"padding_top":36,"padding_bottom":36}},"featured_collection_zDGMy7":{"type":"featured-collection","custom_css":[],"name":"t:sections.featured-collection.presets.name","settings":{"collection":"arabian-drops","products_to_show":5,"title":"Colors that speak confidence","heading_size":"h2","description":"","show_description":false,"description_style":"body","columns_desktop":5,"enable_desktop_slider":false,"full_width":false,"show_view_all":true,"view_all_style":"solid","color_scheme":"","image_ratio":"adapt","image_shape":"default","show_secondary_image":true,"show_vendor":false,"show_rating":true,"quick_add":"standard","columns_mobile":"2","swipe_on_mobile":false,"padding_top":36,"padding_bottom":36}},"featured_collection_gL6wWr":{"type":"featured-collection","custom_css":[".underline-links-hover::before {display: none;}"],"name":"t:sections.featured-collection.presets.name","settings":{"collection":"underwear-men-sale","products_to_show":25,"title":"New Underwear Men Sale","heading_size":"h2","description":"","show_description":false,"description_style":"body","columns_desktop":6,"enable_desktop_slider":true,"full_width":false,"show_view_all":true,"view_all_style":"solid","color_scheme":"scheme-5","image_ratio":"adapt","image_shape":"blob","show_secondary_image":true,"show_vendor":false,"show_rating":true,"quick_add":"none","columns_mobile":"2","swipe_on_mobile":true,"padding_top":36,"padding_bottom":36}},"1753813912972660b8":{"type":"apps","settings":{"include_margins":true}},"image_with_text_AxAF7h":{"type":"image-with-text","blocks":{"text_eEBfiz":{"type":"text","settings":{"text":"<p>Founded in 2009, <a href=\"\/pages\/about-us\" title=\"About Us\">Intymen<\/a> was born with a clear mission: to offer men underwear that combines comfort, design, and unique style. Since its inception, the brand has remained true to its identity, focusing on creating products that not only fit the body perfectly but also reflect the personality and confidence of those who wear them.<\/p><p>Over the years, Intymen has become a recognized name in the men’s underwear market, standing out for its innovative designs, premium materials, and superior wearing experience. Our commitment is to stay at the forefront, evolving with global trends without losing our essence: creating garments that blend functionality and style, designed for modern, confident men.<\/p>","text_style":"body"}}},"block_order":["text_eEBfiz"],"name":"t:sections.image-with-text.presets.name","settings":{"image":"shopify:\/\/shop_images\/sexy-underwear-for-men-banner_a36daf55-71fc-4b3c-b435-95868456f5d1.jpg","height":"adapt","desktop_image_width":"medium","layout":"text_first","image_behavior":"none","content_layout":"no-overlap","desktop_content_position":"top","desktop_content_alignment":"left","mobile_content_alignment":"left","section_color_scheme":"scheme-2","color_scheme":"","padding_top":80,"padding_bottom":80}},"image_banner_itebqa":{"type":"image-banner","blocks":{"heading_gGHfjj":{"type":"heading","settings":{"heading":"Comfort, Design, and Unique Style","heading_size":"h0"}},"text_3KYHyK":{"type":"text","settings":{"text":"Today, with a presence in multiple countries and a loyal community of customers, we remain faithful to our purpose: designing underwear that inspires confidence, comfort, and style in every wear.","text_style":"subtitle"}}},"block_order":["heading_gGHfjj","text_3KYHyK"],"name":"t:sections.image-banner.presets.name","settings":{"image":"shopify:\/\/shop_images\/sexy-underwear-for-men-banner.jpg","image_overlay_opacity":50,"image_height":"small","image_behavior":"fixed","desktop_content_position":"middle-center","desktop_content_alignment":"center","show_text_box":false,"color_scheme":"scheme-4","stack_images_on_mobile":true,"mobile_content_alignment":"center","show_text_below":true}},"featured_blog_aWCbee":{"type":"featured-blog","name":"t:sections.featured-blog.presets.name","settings":{"blog":"news","post_limit":4,"heading":"Blog","heading_size":"h1","columns_desktop":2,"show_view_all":true,"show_image":true,"show_date":false,"show_author":false,"color_scheme":"","padding_top":36,"padding_bottom":36}}},"order":["custom_liquid_aUkkRt","seoptimizan_image_banner_CbYXVc","seoptimizan_image_banner_BfR9Cy","seoptimizan_hero_slider_YdMtQg","seoptimizan_image_banner_rjmgJq","seoptimizan_image_banner_JHNdnP","custom_liquid_ezEEA4","black_friday_ribon_XqJE8L","featured_collection_QitER3","featured_collection_HVawPm","collection_list_XcXXdE","featured_collection_Dbwcfz","featured_collection_8MtMMR","featured_collection_XTBz9L","featured_collection_QkGTXb","featured_collection_zDGMy7","featured_collection_gL6wWr","1753813912972660b8","image_with_text_AxAF7h","image_banner_itebqa","featured_blog_aWCbee"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_liquid_aUkkRt": {
+      "type": "custom-liquid",
+      "custom_css": [
+        ".home-h1 {font-size: 12px; text-align: center;}"
+      ],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<h2 class=\"home-h1\">\n  Intymen | Redefining Men’s Underwear with Design, Comfort, and Confidence</h2>",
+        "color_scheme": "",
+        "padding_top": 4,
+        "padding_bottom": 4
+      }
+    },
+    "seoptimizan_image_banner_CbYXVc": {
+      "type": "seoptimizan-image-banner",
+      "disabled": true,
+      "custom_css": [
+        "a.button {background-color: black; border: 0px; font-size: 20px; font-weight: 700; color: white;}",
+        "h2 {font-weight: 900 !important; font-family: \"arial Black\"; line-height: 30px; letter-spacing: 1px;}",
+        ".button {margin-top: 120px;}",
+        ".seopt-hero__media {display: block;}",
+        "h2 {color: #d29368; font-size: 90px; margin-bottom: 10px !important;}",
+        ".seopt-hero__text p {color: #000; font-weight: 500; margin-bottom: 0px !important; font-family: \"arial\"; font-size: 40px;}",
+        ".button {margin-top: 0px;}"
+      ],
+      "name": "Seoptimizan - Hero Banner (Image/Video)",
+      "settings": {
+        "background_mode": "image",
+        "image_desktop": "shopify://shop_images/banner-agust-desktop_1.jpg",
+        "image_mobile": "shopify://shop_images/banner-agust-mobile_1.jpg",
+        "video_url": "",
+        "heading": "",
+        "text": "",
+        "button_label": "",
+        "button_link": "shopify://collections/new-arrivals",
+        "overlay_color_1": "#ffffff",
+        "overlay_opacity_start": 0,
+        "overlay_stop_start": 70,
+        "overlay_color_2": "#5a5a5a",
+        "overlay_opacity_end": 30,
+        "overlay_stop_end": 100,
+        "overlay_angle": 360,
+        "min_height_mobile": 550,
+        "min_height_desktop": 600,
+        "content_max_width": 800,
+        "content_alignment": "center",
+        "border_radius": 0,
+        "custom_css": "@media (max-width: 1480px) and (min-width: 750px) {\n  .seopt-hero__content {\n    overflow: hidden;\nalign-items: center !important;\n  }\n\n  /*.seopt-hero__content-inner {\n    border: none !important;\n    background: rgba(255, 255, 255, 0.72);\n    max-width: 900px;\n    width: calc(100% - 48px);\n    margin: 0 auto;\n    padding: 24px 32px;\n    box-sizing: border-box;\n  }*/\n}\n@media (max-width: 750px) {\n  h2 {\n    font-size: 50px !important;\n  }\n.seopt-hero__text p {\n  font-size: 30px !important;\n}\n  .seopt-hero__content {\n    overflow: hidden;\nalign-items: center !important;\n  }\n}"
+      }
+    },
+    "seoptimizan_image_banner_BfR9Cy": {
+      "type": "seoptimizan-image-banner",
+      "disabled": true,
+      "custom_css": [
+        "a.button {background-color: black; border: 0px; font-size: 20px; font-weight: 700; color: white;}",
+        "h2 {font-weight: 900 !important; font-family: \"arial Black\"; line-height: 30px; letter-spacing: 1px;}",
+        ".button {margin-top: 120px;}",
+        ".seopt-hero__media {display: block;}",
+        "h2 {color: #d29368; font-size: 90px; margin-bottom: 10px !important;}",
+        ".seopt-hero__text p {color: #000; font-weight: 500; margin-bottom: 0px !important; font-family: \"arial\"; font-size: 40px;}",
+        ".button {margin-top: 0px;}"
+      ],
+      "name": "Seoptimizan - Hero Banner (Image/Video)",
+      "settings": {
+        "background_mode": "image",
+        "image_desktop": "shopify://shop_images/banner-sexy-mens-underwear-intymen-new-drops-travelers-desktop.jpg",
+        "image_mobile": "shopify://shop_images/banner-sexy-mens-underwear-intymen-nuew-drops-travelers-mobile.jpg",
+        "video_url": "",
+        "heading": "TRAVELERS",
+        "text": "<p>NEW ARRIVALS</p>",
+        "button_label": "VIEW COLLECTION",
+        "button_link": "shopify://collections/new-arrivals",
+        "overlay_color_1": "#ffffff",
+        "overlay_opacity_start": 0,
+        "overlay_stop_start": 70,
+        "overlay_color_2": "#5a5a5a",
+        "overlay_opacity_end": 30,
+        "overlay_stop_end": 100,
+        "overlay_angle": 360,
+        "min_height_mobile": 380,
+        "min_height_desktop": 550,
+        "content_max_width": 800,
+        "content_alignment": "center",
+        "border_radius": 0,
+        "custom_css": "@media (max-width: 1480px) and (min-width: 750px) {\n  .seopt-hero__content {\n    overflow: hidden;\nalign-items: center !important;\n  }\n\n  /*.seopt-hero__content-inner {\n    border: none !important;\n    background: rgba(255, 255, 255, 0.72);\n    max-width: 900px;\n    width: calc(100% - 48px);\n    margin: 0 auto;\n    padding: 24px 32px;\n    box-sizing: border-box;\n  }*/\n}\n@media (max-width: 750px) {\n  h2 {\n    font-size: 50px !important;\n  }\n.seopt-hero__text p {\n  font-size: 30px !important;\n}\n  .seopt-hero__content {\n    overflow: hidden;\nalign-items: center !important;\n  }\n}"
+      }
+    },
+    "seoptimizan_hero_slider_YdMtQg": {
+      "type": "seoptimizan-hero-slider",
+      "blocks": {
+        "slide_NrXxLQ": {
+          "type": "slide",
+          "settings": {
+            "background_mode": "image",
+            "image_desktop": "shopify://shop_images/intymen-sexy-mens-underwear-new-arrivals-desktop.jpg",
+            "image_mobile": "shopify://shop_images/intymen-sexy-mens-underwear-new-arrivals-mobile.jpg",
+            "video_url": "",
+            "heading": "Ballin",
+            "text": "<p>Sexy New Arrivals</p>",
+            "button_label": "VIEW COLLECTION",
+            "button_link": "shopify://collections/sexy-mens-underwear-new-arrivals",
+            "overlay_color_1": "#121212",
+            "overlay_opacity_start": 10,
+            "overlay_stop_start": 70,
+            "overlay_color_2": "#121212",
+            "overlay_opacity_end": 80,
+            "overlay_stop_end": 100,
+            "overlay_angle": 360,
+            "content_max_width": 720,
+            "content_alignment": "center",
+            "content_vertical_alignment": "center",
+            "text_alignment": "center"
+          }
+        },
+        "slide_JgcGWX": {
+          "type": "slide",
+          "settings": {
+            "background_mode": "image",
+            "image_desktop": "shopify://shop_images/intymen-mens-underwear-new-arrivals-desktop.jpg",
+            "image_mobile": "shopify://shop_images/intymen-mens-underwear-new-arrivals-mobile.jpg",
+            "video_url": "",
+            "heading": "TOURIST",
+            "text": "<p>New Arrivals</p>",
+            "button_label": "VIEW COLLECTION",
+            "button_link": "shopify://collections/new-arrivals",
+            "overlay_color_1": "#121212",
+            "overlay_opacity_start": 10,
+            "overlay_stop_start": 70,
+            "overlay_color_2": "#121212",
+            "overlay_opacity_end": 80,
+            "overlay_stop_end": 100,
+            "overlay_angle": 360,
+            "content_max_width": 720,
+            "content_alignment": "flex-start",
+            "content_vertical_alignment": "center",
+            "text_alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "slide_NrXxLQ",
+        "slide_JgcGWX"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "a.button {background-color: white; border: 0px; font-size: 20px; font-weight: 700; color: black;}",
+        "h2 {font-weight: 600; line-height: 80px; letter-spacing: -5px;}",
+        " /*.seopt-hero__content-inner {border: 2px solid white; border-radius: 0px !important;}*/.button {margin-top: 120px;}",
+        ".seopt-hero__media {display: block;}",
+        "h2 {color: black; font-family: times; font-size: 110px;}",
+        "p {color: black; font-weight: 500; margin-bottom: 0px !important; font-size: 40px;}",
+        ".button {margin-top: 0px;}"
+      ],
+      "name": "Seoptimizan - Hero Slider PRO",
+      "settings": {
+        "enable_autoplay": true,
+        "autoplay_speed": 5,
+        "show_arrows": true,
+        "show_dots": true,
+        "min_height_mobile": 670,
+        "min_height_desktop": 550,
+        "border_radius": 0,
+        "heading_color": "#121212",
+        "text_color": "#121212",
+        "heading_size_mobile": 48,
+        "heading_size_desktop": 80,
+        "custom_css": "@media (max-width: 1480px) and (min-width: 750px) {\n  .seopt-hero__content {\n    overflow: hidden;\nalign-items: flex-end !important;\n  }\n}\n@media (max-width: 750px) {\n  h2 {\n    font-size: 70px !important;\n  }\n  .seopt-hero__content {\n    overflow: hidden;\nalign-items: start !important;\npadding-top: 110px !important;\n  }\n}\n  .seopt-hero__content-inner {\n    border: none !important;\n    background: rgba(255, 255, 255, 0.72);\n    max-width: 900px;\n    width: calc(100% - 48px);\n    margin: 0 auto;\n    padding: 24px 32px;\n    box-sizing: border-box;\n  }"
+      }
+    },
+    "seoptimizan_image_banner_rjmgJq": {
+      "type": "seoptimizan-image-banner",
+      "disabled": true,
+      "custom_css": [
+        "a.button {background-color: white; border: 0px; font-size: 20px; font-weight: 700; color: black;}",
+        "h2 {font-weight: 900 !important; font-family: \"arial Black\"; line-height: 30px; letter-spacing: 1px;}",
+        ".button {margin-top: 120px;}",
+        ".seopt-hero__media {display: block;}",
+        "h2 {color: #ccc; font-size: 90px; margin-bottom: 10px !important;}",
+        ".seopt-hero__text p {color: #fff; font-weight: 300; margin-bottom: 0px !important; font-size: 40px;}",
+        ".button {margin-top: 0px;}"
+      ],
+      "name": "Seoptimizan - Hero Banner (Image/Video)",
+      "settings": {
+        "background_mode": "image",
+        "image_desktop": "shopify://shop_images/intymen-mens-underwear-new-arrivals-desktop-snakemood_d8ac50f8-6c9c-4464-be80-0cc2fbc002c5.jpg",
+        "image_mobile": "shopify://shop_images/intymen-mens-underwear-new-arrivals-desktop-snakemood-mobile.jpg",
+        "video_url": "",
+        "heading": "SNAKEMOOD",
+        "text": "<p>NEW ARRIVALS</p>",
+        "button_label": "VIEW COLLECTION",
+        "button_link": "shopify://collections/sexy-mens-underwear-new-arrivals",
+        "overlay_color_1": "#121212",
+        "overlay_opacity_start": 0,
+        "overlay_stop_start": 80,
+        "overlay_color_2": "#121212",
+        "overlay_opacity_end": 80,
+        "overlay_stop_end": 100,
+        "overlay_angle": 360,
+        "min_height_mobile": 670,
+        "min_height_desktop": 550,
+        "content_max_width": 800,
+        "content_alignment": "center",
+        "border_radius": 0,
+        "custom_css": "@media (max-width: 1480px) and (min-width: 750px) {\n  .seopt-hero__content {\n    overflow: hidden;\nalign-items: center !important;\n  }\n\n  /*.seopt-hero__content-inner {\n    border: none !important;\n    background: rgba(255, 255, 255, 0.72);\n    max-width: 900px;\n    width: calc(100% - 48px);\n    margin: 0 auto;\n    padding: 24px 32px;\n    box-sizing: border-box;\n  }*/\n}\n@media (max-width: 750px) {\n  h2 {\n    font-size: 50px !important;\n  }\n.seopt-hero__text p {\n  font-size: 30px !important;\n}\n  .seopt-hero__content {\n    overflow: hidden;\nalign-items: center !important;\n  }\n}"
+      }
+    },
+    "seoptimizan_image_banner_JHNdnP": {
+      "type": "seoptimizan-image-banner",
+      "custom_css": [],
+      "name": "Seoptimizan - Hero Banner (Image/Video)",
+      "settings": {
+        "background_mode": "image",
+        "image_desktop": "shopify://shop_images/intymen-mens-underwear-new-arrivals-desktop-black-_-white.jpg",
+        "image_mobile": "shopify://shop_images/intymen-mens-underwear-new-arrivals-mobile-black-_-white.jpg",
+        "video_url": "",
+        "heading": "BLACK & WHITE",
+        "text": "<p>NEW ARRIVALS</p>",
+        "button_label": "VIEW COLLECTION",
+        "button_link": "shopify://collections/new-arrivals",
+        "overlay_color_1": "#121212",
+        "overlay_opacity_start": 0,
+        "overlay_stop_start": 80,
+        "overlay_color_2": "#121212",
+        "overlay_opacity_end": 80,
+        "overlay_stop_end": 100,
+        "overlay_angle": 360,
+        "min_height_mobile": 670,
+        "min_height_desktop": 550,
+        "content_max_width": 800,
+        "content_alignment": "center",
+        "border_radius": 0,
+        "custom_css": ".seopt-hero__heading .bw-black {\n  color: transparent !important;\n  -webkit-text-fill-color: transparent !important;\n\n  -webkit-text-stroke: 2px #ffffff;\n  text-stroke: 2px #ffffff;\n}"
+      }
+    },
+    "custom_liquid_ezEEA4": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n  .seopt-hero__heading .bw-black {\n    color: #111111 !important;\n    -webkit-text-fill-color: #111111 !important;\n  }\n\n  .seopt-hero__heading {\n    color: #ffffff !important;\n    -webkit-text-fill-color: #ffffff !important;\n  }\n</style>\n\n<script>\n(function () {\n\n  function styleBlackWhiteTitle() {\n\n    const titles = document.querySelectorAll('.seopt-hero__heading');\n\n    titles.forEach(function(title) {\n\n      const text = title.textContent.trim();\n\n      if (text.toUpperCase() === 'BLACK & WHITE') {\n\n        title.innerHTML =\n          'BLACK & <span class=\"bw-black\">WHITE</span>';\n\n      }\n\n    });\n\n  }\n\n  /* Carga normal */\n  if (document.readyState === 'loading') {\n    document.addEventListener('DOMContentLoaded', styleBlackWhiteTitle);\n  } else {\n    styleBlackWhiteTitle();\n  }\n\n  /* Shopify Theme Editor */\n  document.addEventListener('shopify:section:load', styleBlackWhiteTitle);\n\n})();\n</script>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "marquesina_promocional_nNHaPT": {
+      "type": "marquesina-promocional",
+      "blocks": {
+        "text_YjMcBU": {
+          "type": "text",
+          "settings": {
+            "text": "Black Friday: Get 20% OFF All Briefs"
+          }
+        },
+        "text_cwB3ee": {
+          "type": "text",
+          "settings": {
+            "text": "Black Friday: 20% OFF All Boxers"
+          }
+        },
+        "text_jJRtyM": {
+          "type": "text",
+          "settings": {
+            "text": "Selling out fast. Get 20% OFF before your size is gone"
+          }
+        }
+      },
+      "block_order": [
+        "text_YjMcBU",
+        "text_cwB3ee",
+        "text_jJRtyM"
+      ],
+      "name": "Marquesina promocional",
+      "settings": {
+        "background_color": "#E60023",
+        "text_color": "#ffffff",
+        "speed": 60,
+        "pause_label": "Pausar texto en movimiento"
+      }
+    },
+    "black_friday_ribon_XqJE8L": {
+      "type": "black-friday-ribon",
+      "disabled": true,
+      "name": "Black Friday ribbon",
+      "settings": {}
+    },
+    "featured_collection_QitER3": {
+      "type": "featured-collection",
+      "custom_css": [],
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "new-arrivals",
+        "products_to_show": 4,
+        "title": "BLACK & WHITE - New Arrivals",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_HVawPm": {
+      "type": "featured-collection",
+      "custom_css": [],
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "sexy-mens-underwear-new-arrivals",
+        "products_to_show": 9,
+        "title": "SNAKEMOOD - Sexy New Arrivals",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "collection_list_XcXXdE": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_FUeYPj": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "new-arrivals"
+          }
+        },
+        "featured_collection_Rh6U4C": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "essentials-mens-underwear"
+          }
+        },
+        "featured_collection_c7J4qk": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mens-briefs"
+          }
+        },
+        "featured_collection_6QXFXn": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mens-bikinis"
+          }
+        },
+        "featured_collection_KaF9MV": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "boxer-briefs"
+          }
+        },
+        "featured_collection_qyLA9g": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "jockstraps"
+          }
+        },
+        "featured_collection_CiQ8MQ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mens-thongs"
+          }
+        },
+        "featured_collection_4gXbUq": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "sexy-mens-underwear"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_FUeYPj",
+        "featured_collection_Rh6U4C",
+        "featured_collection_c7J4qk",
+        "featured_collection_6QXFXn",
+        "featured_collection_KaF9MV",
+        "featured_collection_qyLA9g",
+        "featured_collection_CiQ8MQ",
+        "featured_collection_4gXbUq"
+      ],
+      "custom_css": [
+        ".card-wrapper.animate-arrow.collection-card-wrapper::before {display: none;}"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "Underwear for Men",
+        "heading_size": "h1",
+        "image_ratio": "adapt",
+        "columns_desktop": 4,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 60,
+        "padding_bottom": 72
+      }
+    },
+    "featured_collection_Dbwcfz": {
+      "type": "featured-collection",
+      "custom_css": [],
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "travelers",
+        "products_to_show": 5,
+        "title": "Travelers",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_8MtMMR": {
+      "type": "featured-collection",
+      "custom_css": [],
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "mon-cheri",
+        "products_to_show": 9,
+        "title": "MON CHERI - Lingerie",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 5,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_XTBz9L": {
+      "type": "featured-collection",
+      "custom_css": [],
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "tourist",
+        "products_to_show": 5,
+        "title": "Tourist Collection",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_QkGTXb": {
+      "type": "featured-collection",
+      "custom_css": [],
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "ballin",
+        "products_to_show": 9,
+        "title": "Ballin Collection - Sexy Mens Underwear",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_zDGMy7": {
+      "type": "featured-collection",
+      "custom_css": [],
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "arabian-drops",
+        "products_to_show": 5,
+        "title": "Colors that speak confidence",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 5,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_gL6wWr": {
+      "type": "featured-collection",
+      "custom_css": [
+        ".underline-links-hover::before {display: none;}"
+      ],
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "underwear-men-sale",
+        "products_to_show": 25,
+        "title": "New Underwear Men Sale",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 6,
+        "enable_desktop_slider": true,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-5",
+        "image_ratio": "adapt",
+        "image_shape": "blob",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "1753813912972660b8": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "image_with_text_AxAF7h": {
+      "type": "image-with-text",
+      "blocks": {
+        "text_eEBfiz": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Founded in 2009, <a href=\"/pages/about-us\" title=\"About Us\">Intymen</a> was born with a clear mission: to offer men underwear that combines comfort, design, and unique style. Since its inception, the brand has remained true to its identity, focusing on creating products that not only fit the body perfectly but also reflect the personality and confidence of those who wear them.</p><p>Over the years, Intymen has become a recognized name in the men’s underwear market, standing out for its innovative designs, premium materials, and superior wearing experience. Our commitment is to stay at the forefront, evolving with global trends without losing our essence: creating garments that blend functionality and style, designed for modern, confident men.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "text_eEBfiz"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/sexy-underwear-for-men-banner_a36daf55-71fc-4b3c-b435-95868456f5d1.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-2",
+        "color_scheme": "",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "image_banner_itebqa": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_gGHfjj": {
+          "type": "heading",
+          "settings": {
+            "heading": "Comfort, Design, and Unique Style",
+            "heading_size": "h0"
+          }
+        },
+        "text_3KYHyK": {
+          "type": "text",
+          "settings": {
+            "text": "Today, with a presence in multiple countries and a loyal community of customers, we remain faithful to our purpose: designing underwear that inspires confidence, comfort, and style in every wear.",
+            "text_style": "subtitle"
+          }
+        }
+      },
+      "block_order": [
+        "heading_gGHfjj",
+        "text_3KYHyK"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/sexy-underwear-for-men-banner.jpg",
+        "image_overlay_opacity": 50,
+        "image_height": "small",
+        "image_behavior": "fixed",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-4",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": true
+      }
+    },
+    "featured_blog_aWCbee": {
+      "type": "featured-blog",
+      "name": "t:sections.featured-blog.presets.name",
+      "settings": {
+        "blog": "news",
+        "post_limit": 4,
+        "heading": "Blog",
+        "heading_size": "h1",
+        "columns_desktop": 2,
+        "show_view_all": true,
+        "show_image": true,
+        "show_date": false,
+        "show_author": false,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "custom_liquid_aUkkRt",
+    "seoptimizan_image_banner_CbYXVc",
+    "seoptimizan_image_banner_BfR9Cy",
+    "seoptimizan_hero_slider_YdMtQg",
+    "seoptimizan_image_banner_rjmgJq",
+    "seoptimizan_image_banner_JHNdnP",
+    "custom_liquid_ezEEA4",
+    "marquesina_promocional_nNHaPT",
+    "black_friday_ribon_XqJE8L",
+    "featured_collection_QitER3",
+    "featured_collection_HVawPm",
+    "collection_list_XcXXdE",
+    "featured_collection_Dbwcfz",
+    "featured_collection_8MtMMR",
+    "featured_collection_XTBz9L",
+    "featured_collection_QkGTXb",
+    "featured_collection_zDGMy7",
+    "featured_collection_gL6wWr",
+    "1753813912972660b8",
+    "image_with_text_AxAF7h",
+    "image_banner_itebqa",
+    "featured_blog_aWCbee"
+  ]
+}
