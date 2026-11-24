@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "hooks": [
+    {
+      "file": "layout/theme.liquid",
+      "anchor": "</head>",
+      "position": "before",
+      "snippet": "seopt-head"
+    }
+  ]
+}

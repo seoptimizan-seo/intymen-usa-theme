@@ -1,0 +1,135 @@
+{%- comment -%}
+  marquesina-promocional  |  Versión 1.1.0 (2026-11-23)
+  Librería: seoptimizan-shopify-components  |  Autor: Seoptimizan
+  Dawn: mínimo 15.2.0  |  Requiere core: no
+  No se edita en el repo de un cliente: se corrige en la librería y se actualiza.
+
+  Sección: Marquesina promocional (texto en movimiento).
+  Componente genérico y reutilizable, no ligado a ninguna campaña.
+  Los textos (bloques, hasta 20) y los colores se editan desde el editor de
+  temas, así que cada plantilla puede tener los suyos. Sin bloques, la
+  sección no se muestra (no hay textos de respaldo en el código).
+
+  Archivos: assets/seopt-marquesina-promocional.css y .js (el JS se carga con defer).
+  Variables CSS y personalización: ver README del componente.
+
+  Accesibilidad (WCAG 2.2.2 Pausar, detener, ocultar):
+  - Botón de pausa/reproducción siempre visible y operable con teclado.
+  - Se detiene con prefers-reduced-motion (el CSS quita la animación).
+  - Se pausa con hover y con foco de teclado dentro de la marquesina.
+  - La segunda copia de los textos (y las repeticiones que agrega el JS) va con aria-hidden para que los lectores
+    de pantalla no lean cada texto dos veces.
+{%- endcomment -%}
+
+{%- if section.blocks.size > 0 -%}
+  {{ 'seopt-marquesina-promocional.css' | asset_url | stylesheet_tag }}
+
+  <seopt-ribbon
+    id="Marquee-{{ section.id }}"
+    class="seopt-ribbon"
+    style="--seopt-ribbon-bg: {{ section.settings.background_color | default: '#121212' }}; --seopt-ribbon-color: {{ section.settings.text_color | default: '#ffffff' }}; --seopt-ribbon-speed: {{ section.settings.speed | default: 60 }}s;"
+  >
+    <button
+      type="button"
+      class="seopt-ribbon__toggle"
+      data-seopt-ribbon-toggle
+      aria-pressed="false"
+      aria-controls="MarqueeTrack-{{ section.id }}"
+      aria-label="{{ section.settings.pause_label | default: 'Pausar texto en movimiento' | escape }}"
+    >
+      <span class="seopt-ribbon__toggle-icon" data-seopt-ribbon-icon="pause" aria-hidden="true">
+        <svg viewBox="0 0 12 12" focusable="false"><path d="M2 1h3v10H2zM7 1h3v10H7z" fill="currentColor"/></svg>
+      </span>
+      <span class="seopt-ribbon__toggle-icon" data-seopt-ribbon-icon="play" aria-hidden="true" hidden>
+        <svg viewBox="0 0 12 12" focusable="false"><path d="M2.5 1.2 10.5 6l-8 4.8z" fill="currentColor"/></svg>
+      </span>
+    </button>
+    <div id="MarqueeTrack-{{ section.id }}" class="seopt-ribbon__track">
+      <div class="seopt-ribbon__inner" data-seopt-ribbon-inner>
+        {%- comment -%}
+          Dos grupos idénticos: la animación recorre el ancho de un grupo, así
+          que al terminar el último texto vuelve a entrar el primero sin hueco.
+          El JS repite los textos dentro de cada grupo hasta que un grupo
+          cubra todo el ancho visible (en pantallas anchas con pocos textos).
+          El segundo grupo va con aria-hidden para no leer cada texto dos veces.
+        {%- endcomment -%}
+        {%- for i in (1..2) -%}
+          <div
+            class="seopt-ribbon__group"
+            data-seopt-ribbon-group
+            {% if i == 2 %}aria-hidden="true"{% endif %}
+          >
+            {%- for block in section.blocks -%}
+              <span class="seopt-ribbon__item" {% if i == 1 %}{{ block.shopify_attributes }}{% endif %}>
+                {{ block.settings.text }}
+              </span>
+            {%- endfor -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </seopt-ribbon>
+
+  <script src="{{ 'seopt-marquesina-promocional.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Marquesina promocional",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Color de fondo",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Color del texto",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Velocidad del scroll (segundos por vuelta)",
+      "min": 15,
+      "max": 120,
+      "step": 5,
+      "default": 60
+    },
+    {
+      "type": "text",
+      "id": "pause_label",
+      "label": "Etiqueta accesible del botón de pausa",
+      "default": "Pausar texto en movimiento"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Texto del ribbon",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texto",
+          "default": "Texto promocional"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 20,
+  "presets": [
+    {
+      "name": "Marquesina promocional",
+      "category": "Promotional",
+      "blocks": [
+        { "type": "text" },
+        { "type": "text" },
+        { "type": "text" }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,468 @@
+{%- comment -%}
+  hero-simple  |  Versión 1.1.0 (2026-11-23)
+  Librería: seoptimizan-shopify-components  |  Autor: Seoptimizan
+  Dawn: mínimo 15.2.0  |  Requiere core: no
+  No se edita en el repo de un cliente: se corrige en la librería y se actualiza.
+
+  Sección: Hero simple (banner de imagen o video).
+  Componente genérico y reutilizable: imagen (escritorio y móvil), video subido
+  a Shopify o video embebido (YouTube y Vimeo), con overlay en degradado.
+
+  Archivos: assets/seopt-hero-simple.css (siempre) y assets/seopt-hero-simple.js
+  (solo cuando el fondo es video; se carga con defer).
+  Variables CSS y personalización: ver README del componente.
+
+  Reglas de encabezado (SEO):
+  - Por defecto el título es el H1 de la página.
+  - Con "eyebrow_as_h1" y un eyebrow escrito, el eyebrow pasa a ser el H1 y el
+    título pasa a H2. Una página debe tener un solo H1.
+
+  Accesibilidad:
+  - WCAG 1.4.3 (contraste): el overlay tiene un piso de 35% aplicado al
+    renderizar, no solo como mínimo del control del editor, de modo que una
+    sección guardada con un valor menor también queda protegida.
+  - WCAG 2.2.2 (pausar, detener, ocultar): el video de fondo lleva un botón
+    de pausa siempre visible y operable con teclado; con prefers-reduced-motion
+    el video se pausa al cargar.
+  - Las imágenes de respaldo que genera video_tag reciben alt="" (decorativas).
+{%- endcomment -%}
+
+{{ 'seopt-hero-simple.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign mode = section.settings.background_mode
+
+  assign desktop_image = section.settings.image_desktop
+  assign mobile_image  = section.settings.image_mobile
+
+  # Piso de 35% en el overlay (WCAG 1.4.3), aplicado al renderizar.
+  assign overlay_opacity_start_safe = section.settings.overlay_opacity_start | at_least: 35
+  assign overlay_opacity_end_safe   = section.settings.overlay_opacity_end   | at_least: 35
+  assign overlay_alpha_start = overlay_opacity_start_safe | times: 0.01
+  assign overlay_alpha_end   = overlay_opacity_end_safe   | times: 0.01
+
+  assign overlay_c1 = section.settings.overlay_color_1 | color_modify: 'alpha', overlay_alpha_start
+  assign overlay_c2 = section.settings.overlay_color_2 | color_modify: 'alpha', overlay_alpha_end
+
+  assign video_file = section.settings.video_file
+  assign video_url  = section.settings.video_url
+
+  assign seopt_has_video = false
+  if mode == 'video' and video_file != blank
+    assign seopt_has_video = true
+  elsif mode == 'video_url' and video_url != blank
+    assign seopt_has_video = true
+  endif
+
+  case section.settings.background_position
+    when 'top'
+      assign bg_pos_percent = 0
+      assign iframe_top = '0'
+      assign iframe_bottom = 'auto'
+      assign iframe_ty = '0'
+    when 'bottom'
+      assign bg_pos_percent = 100
+      assign iframe_top = 'auto'
+      assign iframe_bottom = '0'
+      assign iframe_ty = '0'
+    else
+      assign bg_pos_percent = 50
+      assign iframe_top = '50%'
+      assign iframe_bottom = 'auto'
+      assign iframe_ty = '-50%'
+  endcase
+
+  case section.settings.container_width
+    when 'narrow'
+      assign content_max = '480px'
+    when 'wide'
+      assign content_max = '1400px'
+    when 'full'
+      assign content_max = 'none'
+    else
+      assign content_max = '720px'
+  endcase
+
+  assign eyebrow_tag = 'p'
+  assign heading_tag = 'h1'
+  if section.settings.eyebrow_as_h1 and section.settings.eyebrow != blank
+    assign eyebrow_tag = 'h1'
+    assign heading_tag = 'h2'
+  endif
+
+  case section.settings.eyebrow_size
+    when 'small'
+      assign eyebrow_size_mobile = 12
+      assign eyebrow_size_desktop = 13
+    when 'large'
+      assign eyebrow_size_mobile = 16
+      assign eyebrow_size_desktop = 18
+    else
+      assign eyebrow_size_mobile = 14
+      assign eyebrow_size_desktop = 15
+  endcase
+
+  case section.settings.heading_size
+    when 'small'
+      assign heading_size_mobile = 32
+      assign heading_size_desktop = 48
+    when 'large'
+      assign heading_size_mobile = 56
+      assign heading_size_desktop = 104
+    when 'xl'
+      assign heading_size_mobile = 64
+      assign heading_size_desktop = 128
+    else
+      assign heading_size_mobile = 48
+      assign heading_size_desktop = 80
+  endcase
+
+  case section.settings.text_size
+    when 'small'
+      assign text_size_mobile = 15
+      assign text_size_desktop = 16
+    when 'large'
+      assign text_size_mobile = 19
+      assign text_size_desktop = 22
+    else
+      assign text_size_mobile = 17
+      assign text_size_desktop = 19
+  endcase
+-%}
+
+<section
+  id="Banner-{{ section.id }}"
+  class="seopt-hero color-{{ section.settings.color_scheme }}"
+  style="
+    --seopt-hero-overlay-angle: {{ section.settings.overlay_angle }}deg;
+    --seopt-hero-overlay-c1: {{ overlay_c1 }};
+    --seopt-hero-overlay-c2: {{ overlay_c2 }};
+    --seopt-hero-overlay-stop-start: {{ section.settings.overlay_stop_start }}%;
+    --seopt-hero-overlay-stop-end: {{ section.settings.overlay_stop_end }}%;
+    --seopt-hero-min-height-mobile: {{ section.settings.min_height_mobile }}px;
+    --seopt-hero-min-height-desktop: {{ section.settings.min_height_desktop }}px;
+    --seopt-hero-content-max: {{ content_max }};
+    --seopt-hero-content-align: {{ section.settings.content_alignment }};
+    --seopt-hero-text-align: {{ section.settings.text_alignment }};
+    --seopt-hero-radius: {{ section.settings.border_radius }}px;
+    --seopt-hero-bg-y: {{ bg_pos_percent }}%;
+    --seopt-hero-iframe-top: {{ iframe_top }};
+    --seopt-hero-iframe-bottom: {{ iframe_bottom }};
+    --seopt-hero-iframe-ty: {{ iframe_ty }};
+    --seopt-hero-eyebrow-size-mobile: {{ eyebrow_size_mobile }}px;
+    --seopt-hero-eyebrow-size-desktop: {{ eyebrow_size_desktop }}px;
+    --seopt-hero-heading-size-mobile: {{ heading_size_mobile }}px;
+    --seopt-hero-heading-size-desktop: {{ heading_size_desktop }}px;
+    --seopt-hero-text-size-mobile: {{ text_size_mobile }}px;
+    --seopt-hero-text-size-desktop: {{ text_size_desktop }}px;
+  "
+>
+  <seopt-hero-media class="seopt-hero__media">
+
+    {%- comment -%} Fondo: video subido a Shopify {%- endcomment -%}
+    {%- if mode == 'video' and video_file != blank -%}
+      <div class="seopt-hero__video seopt-hero__video--shopify" aria-hidden="true">
+        {%- comment -%}
+          video_tag genera, dentro del <video>, un <img> de respaldo sin atributo
+          alt (el filtro no acepta ese parámetro). Los verificadores de alt y los
+          rastreadores lo marcan aunque el contenedor sea aria-hidden. Se inyecta
+          alt="" (decorativo) sobre el HTML ya generado: del lado del servidor, sin JS.
+          disablepictureinpicture evita el icono nativo de Picture-in-Picture de
+          Chrome, que se confunde con el botón de pausa propio.
+        {%- endcomment -%}
+        {%- assign seopt_video_html = video_file
+          | video_tag:
+            autoplay: true,
+            loop: true,
+            muted: true,
+            controls: false,
+            playsinline: true,
+            disablepictureinpicture: true,
+            preload: 'metadata',
+            class: 'seopt-hero__video-el'
+        -%}
+        {{ seopt_video_html | replace: '<img ', '<img alt="" ' }}
+      </div>
+
+    {%- comment -%} Fondo: video embebido (YouTube o Vimeo), menos recomendado {%- endcomment -%}
+    {%- elsif mode == 'video_url' and video_url != blank -%}
+      <div class="seopt-hero__video seopt-hero__video--embed" aria-hidden="true">
+        {%- if video_url.type == 'youtube' -%}
+          <div class="seopt-hero__iframe" data-seopt-hero-youtube="{{ video_url.id }}"></div>
+        {%- elsif video_url.type == 'vimeo' -%}
+          <iframe
+            class="seopt-hero__iframe"
+            data-seopt-hero-vimeo
+            src="https://player.vimeo.com/video/{{ video_url.id }}?autoplay=1&muted=1&background=1&loop=1&playsinline=1"
+            title="Video de fondo"
+            frameborder="0"
+            allow="autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen
+            loading="lazy"></iframe>
+        {%- endif -%}
+      </div>
+
+    {%- comment -%} Fondo: imágenes (por defecto) {%- endcomment -%}
+    {%- else -%}
+      {%- if mobile_image != blank -%}
+        {{
+          mobile_image
+          | image_url: width: 2000
+          | image_tag:
+            loading: 'lazy',
+            class: 'seopt-hero__img seopt-hero__img--mobile',
+            widths: '375, 550, 750, 990, 1200, 1500, 2000',
+            sizes: '(max-width: 749px) 100vw, 0px'
+        }}
+      {%- endif -%}
+
+      {%- if desktop_image != blank -%}
+        {{
+          desktop_image
+          | image_url: width: 3000
+          | image_tag:
+            loading: 'lazy',
+            class: 'seopt-hero__img seopt-hero__img--desktop',
+            widths: '750, 990, 1200, 1500, 2000, 2400, 3000',
+            sizes: '(min-width: 750px) 100vw, 0px'
+        }}
+      {%- endif -%}
+
+      {%- if mobile_image == blank and desktop_image == blank -%}
+        <div class="seopt-hero__placeholder">
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+
+    <div class="seopt-hero__overlay" aria-hidden="true"></div>
+
+    {%- if seopt_has_video -%}
+      <button
+        type="button"
+        class="seopt-hero__autoplay-toggle"
+        data-seopt-hero-toggle
+        aria-pressed="false"
+        aria-label="Pausar video de fondo"
+      >
+        <span class="seopt-hero__autoplay-icon" data-seopt-hero-icon="pause" aria-hidden="true">
+          <svg viewBox="0 0 12 12" focusable="false"><path d="M2 1h3v10H2zM7 1h3v10H7z" fill="currentColor"/></svg>
+        </span>
+        <span class="seopt-hero__autoplay-icon" data-seopt-hero-icon="play" aria-hidden="true" hidden>
+          <svg viewBox="0 0 12 12" focusable="false"><path d="M2.5 1.2 10.5 6l-8 4.8z" fill="currentColor"/></svg>
+        </span>
+      </button>
+    {%- endif -%}
+
+    {%- if section.settings.eyebrow != blank or section.settings.heading != blank or section.settings.text != blank or section.settings.button_label != blank -%}
+      <div class="seopt-hero__content page-width">
+        <div class="seopt-hero__content-inner">
+          {%- if section.settings.eyebrow != blank -%}
+            {%- if eyebrow_tag == 'h1' -%}
+              <h1 class="seopt-hero__eyebrow">{{ section.settings.eyebrow | escape }}</h1>
+            {%- else -%}
+              <p class="seopt-hero__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+            {%- endif -%}
+          {%- endif -%}
+
+          {%- if section.settings.heading != blank -%}
+            {%- if heading_tag == 'h1' -%}
+              <h1 class="seopt-hero__heading">{{ section.settings.heading | escape }}</h1>
+            {%- else -%}
+              <h2 class="seopt-hero__heading">{{ section.settings.heading | escape }}</h2>
+            {%- endif -%}
+          {%- endif -%}
+
+          {%- if section.settings.text != blank -%}
+            <div class="seopt-hero__text rte">{{ section.settings.text }}</div>
+          {%- endif -%}
+
+          {%- if section.settings.button_label != blank -%}
+            {%- if section.settings.button_link != blank -%}
+              <a class="button" href="{{ section.settings.button_link }}">
+                {{ section.settings.button_label | escape }}
+              </a>
+            {%- else -%}
+              <span class="button seopt-hero__button--disabled" aria-disabled="true">
+                {{ section.settings.button_label | escape }}
+              </span>
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </seopt-hero-media>
+
+  {%- if section.settings.custom_css != blank -%}
+    <style>
+      /* CSS exclusivo de esta instancia (campo del editor) */
+      #Banner-{{ section.id }} {
+        {{ section.settings.custom_css }}
+      }
+    </style>
+  {%- endif -%}
+
+  {%- if seopt_has_video -%}
+    <script src="{{ 'seopt-hero-simple.js' | asset_url }}" defer="defer"></script>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Hero simple",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "background_mode",
+      "label": "Tipo de background",
+      "default": "image",
+      "options": [
+        { "value": "image", "label": "Imagen (desktop/mobile)" },
+        { "value": "video", "label": "Video MP4 (Shopify)" },
+        { "value": "video_url", "label": "Video URL (YouTube/Vimeo)" }
+      ]
+    },
+
+    { "type": "header", "content": "Background - Imágenes" },
+    { "type": "image_picker", "id": "image_desktop", "label": "Imagen Desktop" },
+    { "type": "image_picker", "id": "image_mobile", "label": "Imagen Mobile" },
+
+    { "type": "header", "content": "Background - Video (Shopify)" },
+    { "type": "video", "id": "video_file", "label": "Video (MP4 subido a Shopify)" },
+
+    { "type": "header", "content": "Background - Video URL (YouTube/Vimeo)" },
+    { "type": "video_url", "id": "video_url", "accept": ["youtube", "vimeo"], "label": "URL de video" },
+
+    { "type": "header", "content": "Contenido (opcional)" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow (texto pequeño superior)" },
+    {
+      "type": "checkbox",
+      "id": "eyebrow_as_h1",
+      "label": "Usar el eyebrow como H1 (SEO) y el título como H2",
+      "default": false,
+      "info": "Actívalo cuando el título visual es 'para humanos' (aprobado por el cliente) y prefieres que la keyword real, escrita en el eyebrow, sea el H1 que lee Google. Por defecto el título grande es el H1."
+    },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Banner de imagen" },
+    { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>Escribe aquí el texto de este banner</p>" },
+    { "type": "text", "id": "button_label", "label": "Etiqueta de botón" },
+    { "type": "url", "id": "button_link", "label": "Link del botón" },
+
+    { "type": "header", "content": "Estilo del texto" },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Esquema de color (texto y botón)",
+      "default": "scheme-1"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Alineación del texto",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Izquierda" },
+        { "value": "center", "label": "Centro" },
+        { "value": "right", "label": "Derecha" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "eyebrow_size",
+      "label": "Tamaño del eyebrow",
+      "default": "medium",
+      "options": [
+        { "value": "small", "label": "Pequeño" },
+        { "value": "medium", "label": "Medio" },
+        { "value": "large", "label": "Grande" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Tamaño del título (H1/H2)",
+      "default": "medium",
+      "options": [
+        { "value": "small", "label": "Pequeño" },
+        { "value": "medium", "label": "Medio" },
+        { "value": "large", "label": "Grande" },
+        { "value": "xl", "label": "Extra grande" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "text_size",
+      "label": "Tamaño del texto",
+      "default": "medium",
+      "options": [
+        { "value": "small", "label": "Pequeño" },
+        { "value": "medium", "label": "Medio" },
+        { "value": "large", "label": "Grande" }
+      ]
+    },
+
+    { "type": "header", "content": "Overlay (gradiente controlable)" },
+    { "type": "color", "id": "overlay_color_1", "label": "Color 1 (inicio)", "default": "#000000" },
+    { "type": "range", "id": "overlay_opacity_start", "label": "Opacidad Color 1 (%)", "min": 0, "max": 100, "step": 5, "default": 70, "info": "El sitio aplica automáticamente un mínimo de 35% al mostrarse (aunque aquí se permita bajar más), para asegurar que el texto siga siendo legible sobre la foto/video (WCAG 1.4.3)." },
+    { "type": "range", "id": "overlay_stop_start", "label": "Posición Color 1 (%)", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "color", "id": "overlay_color_2", "label": "Color 2 (final)", "default": "#000000" },
+    { "type": "range", "id": "overlay_opacity_end", "label": "Opacidad Color 2 (%)", "min": 0, "max": 100, "step": 5, "default": 35, "info": "El sitio aplica automáticamente un mínimo de 35% al mostrarse (aunque aquí se permita bajar más), para asegurar que el texto siga siendo legible sobre la foto/video (WCAG 1.4.3)." },
+    { "type": "range", "id": "overlay_stop_end", "label": "Posición Color 2 (%)", "min": 0, "max": 100, "step": 5, "default": 100 },
+    { "type": "range", "id": "overlay_angle", "label": "Ángulo del gradiente", "min": 0, "max": 360, "step": 5, "default": 180 },
+
+    { "type": "header", "content": "Layout" },
+    {
+      "type": "select",
+      "id": "background_position",
+      "label": "Alineación del fondo al recortar (imagen/video)",
+      "default": "center",
+      "options": [
+        { "value": "top", "label": "Arriba (evita cortar caras/cabezas)" },
+        { "value": "center", "label": "Centro" },
+        { "value": "bottom", "label": "Abajo" }
+      ],
+      "info": "Cuando el fondo (imagen o video) es más 'cuadrado' que el banner, se recorta para llenarlo. Esto decide qué parte se conserva."
+    },
+    { "type": "range", "id": "min_height_mobile", "label": "Altura mínima mobile (px)", "min": 220, "max": 900, "step": 10, "default": 360 },
+    { "type": "range", "id": "min_height_desktop", "label": "Altura mínima desktop (px)", "min": 280, "max": 1200, "step": 10, "default": 520 },
+    {
+      "type": "select",
+      "id": "container_width",
+      "label": "Ancho del contenedor de contenido",
+      "default": "normal",
+      "options": [
+        { "value": "narrow", "label": "Angosto (480px)" },
+        { "value": "normal", "label": "Normal (720px)" },
+        { "value": "wide", "label": "Ancho (1400px)" },
+        { "value": "full", "label": "Completo (sin límite)" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "label": "Posición horizontal del bloque",
+      "default": "center",
+      "options": [
+        { "value": "flex-start", "label": "Izquierda" },
+        { "value": "center", "label": "Centro" },
+        { "value": "flex-end", "label": "Derecha" }
+      ]
+    },
+    { "type": "range", "id": "border_radius", "label": "Borde redondeado (px)", "min": 0, "max": 40, "step": 2, "default": 0 },
+
+    { "type": "header", "content": "CSS exclusivo (opcional)" },
+    {
+      "type": "textarea",
+      "id": "custom_css",
+      "label": "CSS (se inserta dentro de #Banner-SECTION_ID { ... })",
+      "info": "Ej: margin-top: 20px; border: 1px solid red;"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero simple"
+    }
+  ]
+}
+{% endschema %}

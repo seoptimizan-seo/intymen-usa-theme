@@ -1,0 +1,140 @@
+/* ==========================================================================
+   seopt-marquesina-promocional.css  |  Versión 1.1.0 (2026-11-23)
+   Librería: seoptimizan-shopify-components  |  Autor: Seoptimizan
+   Componente: marquesina-promocional  |  Bloque CSS: .seopt-ribbon
+
+   Variables que fija el editor de temas en cada instancia (no se
+   sobrescriben desde :root; se cambian en el editor):
+     --seopt-ribbon-bg       color de fondo
+     --seopt-ribbon-color    color del texto
+     --seopt-ribbon-speed    duración de una vuelta (por ejemplo 60s)
+
+   Variable que fija el JS (no se toca): --seopt-ribbon-repeats, cuántas veces
+   se repite el conjunto de textos dentro de cada grupo para cubrir el ancho
+   visible (1 si ya lo cubre). Multiplica la duración, así la velocidad en
+   píxeles por segundo no cambia.
+
+   Variables que el cliente puede sobrescribir en :root (valor de respaldo
+   entre paréntesis):
+     --seopt-ribbon-item-size          tamaño del texto en escritorio (14px)
+     --seopt-ribbon-item-size-mobile   tamaño del texto en móvil (0.8rem)
+     --seopt-ribbon-item-weight        grosor del texto (600)
+     --seopt-ribbon-gap                separación entre textos (3rem)
+     --seopt-ribbon-gap-mobile         separación en móvil (2rem)
+     --seopt-ribbon-padding-y          relleno vertical (8px)
+     --seopt-ribbon-padding-y-mobile   relleno vertical en móvil (6px)
+     --seopt-ribbon-toggle-size        diámetro del botón de pausa (32px)
+   ========================================================================== */
+
+.seopt-ribbon {
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--seopt-ribbon-bg, #121212);
+  color: var(--seopt-ribbon-color, #ffffff);
+}
+
+.seopt-ribbon__toggle {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--seopt-ribbon-toggle-size, 32px);
+  height: var(--seopt-ribbon-toggle-size, 32px);
+  margin-inline-start: 8px;
+  padding: 0;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.seopt-ribbon__toggle:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.seopt-ribbon__toggle-icon[hidden] {
+  display: none;
+}
+
+.seopt-ribbon__toggle-icon svg {
+  display: block;
+  width: 11px;
+  height: 11px;
+}
+
+.seopt-ribbon__track {
+  position: relative;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+.seopt-ribbon__inner {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  padding: var(--seopt-ribbon-padding-y, 8px) 0;
+  white-space: nowrap;
+  animation: seopt-ribbon-scroll calc(var(--seopt-ribbon-speed, 60s) * var(--seopt-ribbon-repeats, 1)) linear infinite;
+}
+
+/* El relleno final de cada grupo iguala la separación entre textos: el
+   recorrido de la animación es exactamente el ancho de un grupo. */
+.seopt-ribbon__group {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--seopt-ribbon-gap, 3rem);
+  padding-inline-end: var(--seopt-ribbon-gap, 3rem);
+}
+
+.seopt-ribbon__inner--paused {
+  animation-play-state: paused;
+}
+
+.seopt-ribbon__item {
+  font-size: var(--seopt-ribbon-item-size, 14px);
+  font-weight: var(--seopt-ribbon-item-weight, 600);
+  text-transform: uppercase;
+}
+
+@media (max-width: 749px) {
+  .seopt-ribbon__inner {
+    padding: var(--seopt-ribbon-padding-y-mobile, 6px) 0;
+  }
+
+  .seopt-ribbon__group {
+    gap: var(--seopt-ribbon-gap-mobile, 2rem);
+    padding-inline-end: var(--seopt-ribbon-gap-mobile, 2rem);
+  }
+
+  .seopt-ribbon__item {
+    font-size: var(--seopt-ribbon-item-size-mobile, 0.8rem);
+  }
+}
+
+@keyframes seopt-ribbon-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Quien pidió "reducir movimiento" en su sistema nunca ve la animación y
+   no necesita el botón de pausa. */
+@media (prefers-reduced-motion: reduce) {
+  .seopt-ribbon__inner {
+    animation: none;
+  }
+
+  .seopt-ribbon__toggle {
+    display: none;
+  }
+}

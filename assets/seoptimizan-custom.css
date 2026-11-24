@@ -1,0 +1,21 @@
+/* ==========================================================================
+   seoptimizan-custom.css  |  Archivo de este cliente. La librería no lo
+   sobrescribe nunca.
+
+   Orden de carga: base.css (nativo) > seopt-core.css > este archivo (los dos
+   desde el head) > CSS de cada componente (lo carga su sección, en el cuerpo).
+   Por eso este archivo gana con variables en :root o con más especificidad,
+   no por orden de carga.
+
+   Qué va aquí
+   1. Valores de tokens y variables de componentes que cambian para este
+      cliente, dentro de :root. Ejemplo:
+        :root { --seopt-space-normal: 72px; }
+   2. Reglas propias del cliente, en bloques con encabezado por plantilla o
+      página, con prefijo de clase o clase de cuerpo de la plantilla.
+
+   Reglas: sin !important y sin editar componentes de la librería. Si un
+   componente necesita más personalización, se corrige en la librería.
+   Si este archivo crece, se divide por página en
+   seoptimizan-custom-<pagina>.css, cargado solo donde aplica.
+   ========================================================================== */

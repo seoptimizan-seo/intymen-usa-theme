@@ -1,0 +1,65 @@
+/* ==========================================================================
+   seopt-precio-descuento.css  |  Versión 1.2.0 (2026-11-24)
+   Librería: seoptimizan-shopify-components  |  Autor: Seoptimizan
+   Componente: precio-descuento  |  Bloque CSS: .seopt-pd
+
+   Variables que el cliente puede sobrescribir en :root (valor de respaldo
+   entre paréntesis):
+     --seopt-pd-gap             separación entre precio final, precio tachado y etiqueta (0.8rem)
+     --seopt-pd-old-color       color del precio original tachado (currentColor)
+     --seopt-pd-old-opacity     opacidad del precio original (0.65)
+     --seopt-pd-old-size        tamaño del precio original (0.9em)
+     --seopt-pd-final-color     color del precio final (currentColor)
+     --seopt-pd-final-weight    grosor del precio final (700)
+     --seopt-pd-badge-bg        fondo de la etiqueta del porcentaje (#b00020)
+     --seopt-pd-badge-color     color del texto de la etiqueta (#ffffff)
+     --seopt-pd-badge-size      tamaño del texto de la etiqueta (0.8em)
+     --seopt-pd-badge-radius    radio de las esquinas de la etiqueta (4px)
+     --seopt-pd-badge-padding   relleno de la etiqueta (0.1em 0.5em)
+   ========================================================================== */
+
+/* La separación va con márgenes y no con gap: no depende de que el contenedor
+   sea flex ni de los estilos del precio nativo de Dawn. */
+.seopt-pd {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  row-gap: 0.2rem;
+}
+
+.seopt-pd__old {
+  margin-inline-end: var(--seopt-pd-gap, 0.8rem);
+  color: var(--seopt-pd-old-color, currentColor);
+  opacity: var(--seopt-pd-old-opacity, 0.65);
+  font-size: var(--seopt-pd-old-size, 0.9em);
+  text-decoration: line-through;
+}
+
+.seopt-pd__final {
+  margin-inline-end: var(--seopt-pd-gap, 0.8rem);
+  color: var(--seopt-pd-final-color, currentColor);
+  font-weight: var(--seopt-pd-final-weight, 700);
+}
+
+.seopt-pd__badge {
+  background: var(--seopt-pd-badge-bg, #b00020);
+  color: var(--seopt-pd-badge-color, #ffffff);
+  font-size: var(--seopt-pd-badge-size, 0.8em);
+  font-weight: 700;
+  line-height: 1.4;
+  padding: var(--seopt-pd-badge-padding, 0.1em 0.5em);
+  white-space: nowrap;
+  border-radius: var(--seopt-pd-badge-radius, 4px);
+}
+
+.seopt-pd__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

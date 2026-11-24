@@ -1,0 +1,26 @@
+{%- comment -%}
+  seopt-head  |  Versión 1.2.0 (2026-11-23)
+  Librería: seoptimizan-shopify-components  |  Autor: Seoptimizan
+  Dawn: mínimo 15.2.0
+  No se edita en el repo de un cliente: se corrige en la librería y se actualiza.
+
+  Snippet del core. Es el ÚNICO enganche que la librería pone en layout/theme.liquid
+  (una línea, antes de </head>, registrada en seoptimizan.hooks.json):
+
+    {% render 'seopt-head' %}
+
+  Qué carga, en este orden:
+  1. seopt-core.css: tokens y utilidades de la librería.
+  2. seoptimizan-custom.css: las variables y reglas propias del cliente.
+  3. seoptimizan-client-head: el snippet del cliente (datos y scripts propios).
+
+  Como el enganche va antes de </head>, estos archivos cargan después de base.css
+  de Dawn. El CSS de cada componente lo carga su propia sección, ya en el cuerpo de
+  la página, así que llega después de este snippet: el cliente cambia un componente
+  con sus variables CSS en :root (funcionan sin importar el orden) o con reglas más
+  específicas, no por orden de carga. Ver docs/CONVENTIONS.md, sección 3.
+{%- endcomment -%}
+
+{{ 'seopt-core.css' | asset_url | stylesheet_tag }}
+{{ 'seoptimizan-custom.css' | asset_url | stylesheet_tag }}
+{%- render 'seoptimizan-client-head' -%}
