@@ -22,6 +22,62 @@
         "padding_bottom": 4
       }
     },
+    "marquesina_promocional_nNHaPT": {
+      "type": "marquesina-promocional",
+      "blocks": {
+        "text_YjMcBU": {
+          "type": "text",
+          "settings": {
+            "text": "Black Friday: 20% OFF Briefs. Selling out fast"
+          }
+        },
+        "text_cwB3ee": {
+          "type": "text",
+          "settings": {
+            "text": "20% OFF Boxers. Grab your size before it's gone"
+          }
+        },
+        "text_jJRtyM": {
+          "type": "text",
+          "settings": {
+            "text": "20% OFF Bikinis. Don't wait, they're going fast"
+          }
+        },
+        "text_gE4734": {
+          "type": "text",
+          "settings": {
+            "text": "Sexy Boy at 30% OFF. Selling out fast"
+          }
+        },
+        "text_RJrCqd": {
+          "type": "text",
+          "settings": {
+            "text": "30% OFF Thongs. Popular sizes are going quickly"
+          }
+        },
+        "text_rercxB": {
+          "type": "text",
+          "settings": {
+            "text": "30% OFF Jockstraps. Get yours before they're gone"
+          }
+        }
+      },
+      "block_order": [
+        "text_YjMcBU",
+        "text_cwB3ee",
+        "text_jJRtyM",
+        "text_gE4734",
+        "text_RJrCqd",
+        "text_rercxB"
+      ],
+      "name": "Marquesina promocional",
+      "settings": {
+        "background_color": "#e60023",
+        "text_color": "#ffffff",
+        "speed": 60,
+        "pause_label": "Pausar texto en movimiento"
+      }
+    },
     "seoptimizan_image_banner_CbYXVc": {
       "type": "seoptimizan-image-banner",
       "disabled": true,
@@ -251,41 +307,6 @@
         "color_scheme": "",
         "padding_top": 0,
         "padding_bottom": 0
-      }
-    },
-    "marquesina_promocional_nNHaPT": {
-      "type": "marquesina-promocional",
-      "blocks": {
-        "text_YjMcBU": {
-          "type": "text",
-          "settings": {
-            "text": "Black Friday: Get 20% OFF All Briefs"
-          }
-        },
-        "text_cwB3ee": {
-          "type": "text",
-          "settings": {
-            "text": "Black Friday: 20% OFF All Boxers"
-          }
-        },
-        "text_jJRtyM": {
-          "type": "text",
-          "settings": {
-            "text": "Selling out fast. Get 20% OFF before your size is gone"
-          }
-        }
-      },
-      "block_order": [
-        "text_YjMcBU",
-        "text_cwB3ee",
-        "text_jJRtyM"
-      ],
-      "name": "Marquesina promocional",
-      "settings": {
-        "background_color": "#E60023",
-        "text_color": "#ffffff",
-        "speed": 60,
-        "pause_label": "Pausar texto en movimiento"
       }
     },
     "black_friday_ribon_XqJE8L": {
@@ -710,13 +731,13 @@
   },
   "order": [
     "custom_liquid_aUkkRt",
+    "marquesina_promocional_nNHaPT",
     "seoptimizan_image_banner_CbYXVc",
     "seoptimizan_image_banner_BfR9Cy",
     "seoptimizan_hero_slider_YdMtQg",
     "seoptimizan_image_banner_rjmgJq",
     "seoptimizan_image_banner_JHNdnP",
     "custom_liquid_ezEEA4",
-    "marquesina_promocional_nNHaPT",
     "black_friday_ribon_XqJE8L",
     "featured_collection_QitER3",
     "featured_collection_HVawPm",
