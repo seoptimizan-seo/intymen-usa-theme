@@ -84,6 +84,41 @@
         "padding_bottom": 36
       }
     },
+    "marquesina_promocional_3AxLHh": {
+      "type": "marquesina-promocional",
+      "blocks": {
+        "text_dARm33": {
+          "type": "text",
+          "settings": {
+            "text": "Black Friday: Get 30% OFF Sexy Boy"
+          }
+        },
+        "text_rJjdcg": {
+          "type": "text",
+          "settings": {
+            "text": "30% OFF Sexy Boy."
+          }
+        },
+        "text_fAF3fk": {
+          "type": "text",
+          "settings": {
+            "text": "Your Sexy Boy picks are 30% OFF."
+          }
+        }
+      },
+      "block_order": [
+        "text_dARm33",
+        "text_rJjdcg",
+        "text_fAF3fk"
+      ],
+      "name": "Marquesina promocional",
+      "settings": {
+        "background_color": "#E60023",
+        "text_color": "#ffffff",
+        "speed": 60,
+        "pause_label": "Pausar texto en movimiento"
+      }
+    },
     "banner": {
       "type": "main-collection-banner",
       "settings": {
@@ -120,7 +155,7 @@
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
         "collection": "night-glow",
-        "products_to_show": 5,
+        "products_to_show": 25,
         "title": "Made to be noticed",
         "heading_size": "h2",
         "description": "",
@@ -150,6 +185,7 @@
     "1759488092163f192b",
     "featured_collection_xbDXzR",
     "banner",
+    "marquesina_promocional_3AxLHh",
     "product-grid",
     "featured_collection_rAQnP6"
   ]
