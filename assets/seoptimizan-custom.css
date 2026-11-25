@@ -19,3 +19,9 @@
    Si este archivo crece, se divide por página en
    seoptimizan-custom-<pagina>.css, cargado solo donde aplica.
    ========================================================================== */
+
+/* Plantilla collection.sexy-boy: oculta el header global del grupo Header para que solo se vea el header propio de la plantilla (logo Sexy Boy). Depende de la clase que agrega el Script 01 de layout/theme.liquid. Reemplaza la regla de base.css que usaba el ID del grupo, que cambia en cada tema nuevo. */
+body.sexy-mens-underwear [id^="shopify-section-sections--"][id$="__header"],
+body.sexy-mens-underwear-new-arrivals [id^="shopify-section-sections--"][id$="__header"] {
+  display: none;
+}
