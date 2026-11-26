@@ -271,6 +271,35 @@
         "custom_css": "@media (max-width: 1480px) and (min-width: 750px) {\n  .seopt-hero__content {\n    overflow: hidden;\nalign-items: center !important;\n  }\n\n  /*.seopt-hero__content-inner {\n    border: none !important;\n    background: rgba(255, 255, 255, 0.72);\n    max-width: 900px;\n    width: calc(100% - 48px);\n    margin: 0 auto;\n    padding: 24px 32px;\n    box-sizing: border-box;\n  }*/\n}\n@media (max-width: 750px) {\n  h2 {\n    font-size: 50px !important;\n  }\n.seopt-hero__text p {\n  font-size: 30px !important;\n}\n  .seopt-hero__content {\n    overflow: hidden;\nalign-items: center !important;\n  }\n}"
       }
     },
+    "featured_collection_YQkwxJ": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "sexy-mens-underwear",
+        "products_to_show": 24,
+        "title": "<strong>UP TO 30% OFF — BLACK FRIDAY</strong>",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 6,
+        "enable_desktop_slider": false,
+        "full_width": true,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "seoptimizan_image_banner_JHNdnP": {
       "type": "seoptimizan-image-banner",
       "custom_css": [],
@@ -736,6 +765,7 @@
     "seoptimizan_image_banner_BfR9Cy",
     "seoptimizan_hero_slider_YdMtQg",
     "seoptimizan_image_banner_rjmgJq",
+    "featured_collection_YQkwxJ",
     "seoptimizan_image_banner_JHNdnP",
     "custom_liquid_ezEEA4",
     "black_friday_ribon_XqJE8L",
