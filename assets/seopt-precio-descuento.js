@@ -1,5 +1,5 @@
 /*
- * seopt-precio-descuento.js  |  Versión 1.2.0 (2026-11-24)
+ * seopt-precio-descuento.js  |  Versión 1.3.0 (2026-11-26)
  * Librería: seoptimizan-shopify-components  |  Autor: Seoptimizan
  *
  * Elemento personalizado <seopt-price-discount>: para los productos de una
@@ -338,7 +338,10 @@
         var badge = document.createElement('span');
         badge.className = 'seopt-pd__badge';
         var text = (wasOnSale && rule.etiquetaOferta) || rule.etiqueta || '-' + rule.porcentaje + '%';
-        badge.textContent = text;
+        /* [total]: descuento real desde el precio original hasta el final.
+           [porcentaje]: el de la regla. */
+        var total = listMinor > 0 ? Math.round((1 - finalMinor / listMinor) * 100) : rule.porcentaje;
+        badge.textContent = text.split('[total]').join(String(total)).split('[porcentaje]').join(String(rule.porcentaje));
         block.appendChild(badge);
       }
       return block;
