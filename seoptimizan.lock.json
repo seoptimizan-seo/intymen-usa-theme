@@ -7,7 +7,7 @@
   "installed": {
     "core": {
       "version": "1.2.0",
-      "library_commit": "00f66fcf50aca07faf2c5727d819509ed8f9fc65",
+      "library_commit": "f96f27976b4c23513e8ad95ca8c4454d43342050",
       "files": {
         "assets/seopt-core.css": "f0a77f48e036408ac72919e444cdb0ed4063af4eb16024e163b55c7f1f2cf44c",
         "snippets/seopt-head.liquid": "6e1d9e0815264d5e748419fcec8f0510c280a926d64cc21e89b261ecb733a5c9"
@@ -41,12 +41,12 @@
       }
     },
     "precio-descuento": {
-      "version": "1.2.0",
-      "library_commit": "00f66fcf50aca07faf2c5727d819509ed8f9fc65",
+      "version": "1.3.0",
+      "library_commit": "f96f27976b4c23513e8ad95ca8c4454d43342050",
       "files": {
-        "assets/seopt-precio-descuento.css": "1481e92d0d92005cb034c794c6ba57347db4aa9007bef9c5eba0eebd2d9636ec",
-        "assets/seopt-precio-descuento.js": "c729f72dc1ffede083deb7f5da505f8e2fab90d8ecc94d82938190c1fa9f3f7a",
-        "sections/seoptimizan-precio-descuento.liquid": "6af146fa671dc8363588222045395bd603bc5b4aa475aae1c123524fbd988b8a"
+        "assets/seopt-precio-descuento.css": "12f6ed266c046ffbeb30381340d45fde57de3e9e54c771a462b54bc98af0f04d",
+        "assets/seopt-precio-descuento.js": "35343f1e0473a5d399e456ddf8a91148459d35809a8e5a750e4d586064c1dd5f",
+        "sections/seoptimizan-precio-descuento.liquid": "f7234315aeb7654384cafd0496181d29a1c463278fbc498eb4ad17b90fb8e3ea"
       }
     }
   }
