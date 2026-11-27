@@ -86,7 +86,7 @@
         "shape": "text",
         "text": "%",
         "color_a": "#222222",
-        "color_b": "#E60023",
+        "color_b": "#e60023",
         "count": 24,
         "count_mobile": 12,
         "size_min": 14,
@@ -96,7 +96,7 @@
         "sway": 40,
         "opacity": 45,
         "run_seconds": 5,
-        "once_per_session": true,
+        "once_per_session": false,
         "show_toggle": true,
         "pause_label": "Pausar el efecto",
         "play_label": "Reanudar el efecto"
