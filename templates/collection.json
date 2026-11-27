@@ -17,6 +17,48 @@
         "color_scheme": "scheme-1"
       }
     },
+    "marquesina_promocional_JbRFDR": {
+      "type": "marquesina-promocional",
+      "blocks": {
+        "text_Agpnpk": {
+          "type": "text",
+          "settings": {
+            "text": "BLACK FRIDAY | 20%, 30%, 40% & UP TO 46% OFF"
+          }
+        },
+        "text_f7nRgK": {
+          "type": "text",
+          "settings": {
+            "text": "UP TO 46% OFF STOREWIDE | SHOP NOW"
+          }
+        },
+        "text_DQeb88": {
+          "type": "text",
+          "settings": {
+            "text": "BLACK FRIDAY DEALS | BIG SAVINGS. NO CODE NEEDED."
+          }
+        },
+        "text_dRJ6Qi": {
+          "type": "text",
+          "settings": {
+            "text": "SAVE UP TO 46% | GRAB YOUR SIZE BEFORE IT'S GONE!"
+          }
+        }
+      },
+      "block_order": [
+        "text_Agpnpk",
+        "text_f7nRgK",
+        "text_DQeb88",
+        "text_dRJ6Qi"
+      ],
+      "name": "Marquesina promocional",
+      "settings": {
+        "background_color": "#e60023",
+        "text_color": "#ffffff",
+        "speed": 60,
+        "pause_label": "Pausar texto en movimiento"
+      }
+    },
     "product-grid": {
       "type": "main-collection-product-grid",
       "settings": {
@@ -39,6 +81,7 @@
     }
   },
   "order": [
+    "marquesina_promocional_JbRFDR",
     "banner",
     "product-grid"
   ]
