@@ -1,0 +1,117 @@
+/* seopt-efecto-caida.css  |  Versión 1.1.1 (2026-11-27)  |  Seoptimizan
+   Variables: --seopt-fall-* (ver README). Sin !important ni @layer. */
+
+.seopt-fall__layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: var(--seopt-fall-z, 5);
+  opacity: 1;
+  transition: opacity 2s ease;
+}
+
+.seopt-fall__layer--off {
+  opacity: 0;
+}
+
+.seopt-fall__item {
+  position: absolute;
+  top: 0;
+  left: var(--seopt-fall-x, 50%);
+  will-change: transform;
+  animation: seopt-fall-drop var(--seopt-fall-dur, 12s) linear var(--seopt-fall-delay, 0s) infinite;
+  animation-play-state: var(--seopt-fall-state, running);
+}
+
+.seopt-fall__inner {
+  display: block;
+  opacity: var(--seopt-fall-o, 0.4);
+  color: var(--seopt-fall-color, currentColor);
+  font-family: var(--seopt-fall-font, inherit);
+  font-weight: var(--seopt-fall-weight, 300);
+  font-size: var(--seopt-fall-size, 24px);
+  line-height: 1;
+  animation: seopt-fall-sway var(--seopt-fall-sway-dur, 5s) ease-in-out var(--seopt-fall-delay, 0s) infinite alternate;
+  animation-play-state: var(--seopt-fall-state, running);
+}
+
+.seopt-fall__inner--confetti {
+  width: calc(var(--seopt-fall-size, 24px) * 0.28);
+  height: var(--seopt-fall-size, 24px);
+  background: var(--seopt-fall-color, currentColor);
+  border-radius: 1px;
+}
+
+.seopt-fall__inner--image {
+  width: var(--seopt-fall-size, 24px);
+  height: var(--seopt-fall-size, 24px);
+  object-fit: contain;
+}
+
+@keyframes seopt-fall-drop {
+  from {
+    transform: translate3d(0, -12vh, 0);
+  }
+  to {
+    transform: translate3d(0, 112vh, 0);
+  }
+}
+
+@keyframes seopt-fall-sway {
+  from {
+    transform: translate3d(calc(var(--seopt-fall-sway, 40px) * -1), 0, 0) rotate(calc(var(--seopt-fall-rot, 40deg) * -1));
+  }
+  to {
+    transform: translate3d(var(--seopt-fall-sway, 40px), 0, 0) rotate(var(--seopt-fall-rot, 40deg));
+  }
+}
+
+.seopt-fall__toggle {
+  position: fixed;
+  left: var(--seopt-fall-toggle-inset, 1.6rem);
+  bottom: var(--seopt-fall-toggle-inset, 1.6rem);
+  z-index: var(--seopt-fall-z, 5);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--seopt-fall-toggle-size, 3.6rem);
+  height: var(--seopt-fall-toggle-size, 3.6rem);
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--seopt-fall-toggle-bg, rgba(255, 255, 255, 0.9));
+  color: var(--seopt-fall-toggle-color, #222222);
+  box-shadow: 0 0.1rem 0.6rem rgba(0, 0, 0, 0.18);
+  opacity: var(--seopt-fall-toggle-opacity, 0.7);
+  cursor: pointer;
+}
+
+.seopt-fall__toggle[hidden] {
+  display: none;
+}
+
+.seopt-fall__toggle:hover,
+.seopt-fall__toggle:focus-visible {
+  opacity: 1;
+}
+
+.seopt-fall__toggle:focus-visible {
+  outline: 2px solid var(--seopt-fall-toggle-color, #222222);
+  outline-offset: 2px;
+}
+
+.seopt-fall__toggle svg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seopt-fall__layer,
+  .seopt-fall__toggle {
+    display: none;
+  }
+}

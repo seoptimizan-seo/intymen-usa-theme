@@ -1,0 +1,175 @@
+{%- comment -%}
+  seoptimizan-efecto-caida  |  Versión 1.1.1 (2026-11-27)
+  Librería: seoptimizan-shopify-components  |  Autor: Seoptimizan
+  Dawn: mínimo 15.2.0  |  Requiere core: no
+  No se edita en el repo de un cliente: se corrige en la librería y se actualiza.
+
+  Sección: símbolos que caen despacio sobre la página (como la nieve en diciembre),
+  para fechas especiales: Black Friday, Navidad, aniversario. El símbolo es un texto
+  (por ejemplo "%"), confeti o una imagen propia. Es decorativo: no atrapa clics,
+  se oculta de los lectores de pantalla y no corre si el visitante pide menos
+  movimiento. Tiene ventana de fechas para apagarse solo.
+  Uso: Personalizar tema > grupo Header > Agregar sección > "Símbolos que caen".
+
+  Accesibilidad (WCAG 2.2.2): el efecto trae un botón discreto de pausa, a menos que
+  se desactive y se use una duración de 5 segundos o menos.
+
+  Archivos: assets/seopt-efecto-caida.css y .js (el JS se carga con defer).
+  Variables CSS y personalización: ver README del componente.
+{%- endcomment -%}
+
+{%- liquid
+  assign show = section.settings.enabled
+  if section.settings.only_home and template.name != 'index'
+    assign show = false
+  endif
+  assign colors = section.settings.color_a
+  if section.settings.color_b != blank
+    assign colors = colors | append: ',' | append: section.settings.color_b
+  endif
+-%}
+
+{%- if show -%}
+  {{ 'seopt-efecto-caida.css' | asset_url | stylesheet_tag }}
+
+  <seopt-fall
+    id="SeoptFall-{{ section.id }}"
+    data-shape="{{ section.settings.shape }}"
+    data-text="{{ section.settings.text | escape }}"
+    {%- if section.settings.image != blank %}
+    data-image="{{ section.settings.image | image_url: width: 120 }}"
+    {%- endif %}
+    data-colors="{{ colors | escape }}"
+    data-count="{{ section.settings.count }}"
+    data-count-mobile="{{ section.settings.count_mobile }}"
+    data-size-min="{{ section.settings.size_min }}"
+    data-size-max="{{ section.settings.size_max }}"
+    data-fall-min="{{ section.settings.fall_min }}"
+    data-fall-max="{{ section.settings.fall_max }}"
+    data-opacity="{{ section.settings.opacity }}"
+    data-sway="{{ section.settings.sway }}"
+    data-run="{{ section.settings.run_seconds }}"
+    data-once="{{ section.settings.once_per_session }}"
+    data-start="{{ section.settings.starts_at | escape }}"
+    data-end="{{ section.settings.ends_at | escape }}"
+    data-preview="{{ request.design_mode }}"
+    data-pause-label="{{ section.settings.pause_label | escape }}"
+    data-play-label="{{ section.settings.play_label | escape }}"
+  >
+    <div class="seopt-fall__layer" data-seopt-layer aria-hidden="true"></div>
+    {%- if section.settings.show_toggle -%}
+      <button type="button" class="seopt-fall__toggle" data-seopt-toggle aria-label="{{ section.settings.pause_label | escape }}" hidden>
+        <span data-seopt-pause-icon><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg></span>
+        <span data-seopt-play-icon hidden><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l12-7.5-12-7.5z"/></svg></span>
+      </button>
+    {%- endif -%}
+  </seopt-fall>
+
+  <script src="{{ 'seopt-efecto-caida.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Símbolos que caen",
+  "tag": "div",
+  "class": "seopt-efecto-caida-section",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enabled",
+      "label": "Activar el efecto",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "only_home",
+      "label": "Solo en la página de inicio",
+      "default": false
+    },
+    { "type": "header", "content": "Fechas" },
+    {
+      "type": "text",
+      "id": "starts_at",
+      "label": "Empieza",
+      "info": "Opcional. Fecha, hora y zona horaria, por ejemplo 2026-11-27T00:00:00-05:00. Vacío: ya empezó."
+    },
+    {
+      "type": "text",
+      "id": "ends_at",
+      "label": "Termina",
+      "info": "Opcional. Por ejemplo 2026-11-30T23:59:59-05:00. Vacío: sin fin. Pon siempre un fin para que se apague solo. Se compara con el reloj del visitante. En el editor de temas se ve siempre."
+    },
+    { "type": "header", "content": "Símbolo" },
+    {
+      "type": "select",
+      "id": "shape",
+      "label": "Forma",
+      "default": "text",
+      "options": [
+        { "value": "text", "label": "Texto o símbolo (por ejemplo %)" },
+        { "value": "confetti", "label": "Confeti (tiras finas)" },
+        { "value": "image", "label": "Imagen propia" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Texto o símbolo",
+      "default": "%",
+      "info": "Solo con la forma \"Texto\". Un carácter funciona mejor: %, *, +, un copo."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagen",
+      "info": "Solo con la forma \"Imagen\". PNG o SVG con fondo transparente, cuadrada."
+    },
+    { "type": "color", "id": "color_a", "label": "Color principal", "default": "#222222" },
+    { "type": "color", "id": "color_b", "label": "Segundo color", "info": "Opcional. Los símbolos alternan entre los dos colores." },
+    { "type": "header", "content": "Cantidad y tamaño" },
+    { "type": "range", "id": "count", "min": 6, "max": 60, "step": 2, "label": "Cantidad en escritorio", "default": 24 },
+    { "type": "range", "id": "count_mobile", "min": 4, "max": 40, "step": 2, "label": "Cantidad en móvil", "default": 12 },
+    { "type": "range", "id": "size_min", "min": 8, "max": 60, "step": 2, "unit": "px", "label": "Tamaño mínimo", "default": 14 },
+    { "type": "range", "id": "size_max", "min": 12, "max": 80, "step": 2, "unit": "px", "label": "Tamaño máximo", "default": 34 },
+    { "type": "header", "content": "Movimiento" },
+    { "type": "range", "id": "fall_min", "min": 5, "max": 30, "step": 1, "unit": "s", "label": "Caída más rápida", "default": 9 },
+    { "type": "range", "id": "fall_max", "min": 8, "max": 40, "step": 1, "unit": "s", "label": "Caída más lenta", "default": 18 },
+    { "type": "range", "id": "sway", "min": 0, "max": 120, "step": 5, "unit": "px", "label": "Vaivén horizontal", "default": 40 },
+    { "type": "range", "id": "opacity", "min": 10, "max": 100, "step": 5, "unit": "%", "label": "Opacidad máxima", "default": 45, "info": "Los símbolos pequeños se ven más transparentes para dar profundidad." },
+    {
+      "type": "range",
+      "id": "run_seconds",
+      "min": 0,
+      "max": 120,
+      "step": 5,
+      "unit": "s",
+      "label": "Duración del efecto",
+      "default": 25,
+      "info": "Se apaga con suavidad tras estos segundos desde que carga la página. 0: no se apaga."
+    },
+    {
+      "type": "checkbox",
+      "id": "once_per_session",
+      "label": "Solo una vez por visita",
+      "default": true,
+      "info": "El efecto recibe al visitante en la primera página y no vuelve a aparecer mientras navega. Se reinicia al abrir el sitio de nuevo. Si lo desmarcas, corre en cada página. En el editor de temas se ve siempre."
+    },
+    { "type": "header", "content": "Accesibilidad" },
+    {
+      "type": "checkbox",
+      "id": "show_toggle",
+      "label": "Mostrar el botón de pausa",
+      "default": true,
+      "info": "Requerido por accesibilidad si el efecto dura más de 5 segundos."
+    },
+    { "type": "text", "id": "pause_label", "label": "Texto del botón de pausa", "default": "Pausar el efecto" },
+    { "type": "text", "id": "play_label", "label": "Texto del botón de reanudar", "default": "Reanudar el efecto" }
+  ],
+  "presets": [
+    { "name": "Símbolos que caen" }
+  ]
+}
+{% endschema %}
