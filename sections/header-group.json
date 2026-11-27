@@ -74,12 +74,40 @@
         "show_badge": true,
         "skip_on_sale": false
       }
+    },
+    "seoptimizan_efecto_caida_cdp9mN": {
+      "type": "seoptimizan-efecto-caida",
+      "name": "Símbolos que caen",
+      "settings": {
+        "enabled": true,
+        "only_home": false,
+        "starts_at": "",
+        "ends_at": "",
+        "shape": "text",
+        "text": "%",
+        "color_a": "#222222",
+        "color_b": "#E60023",
+        "count": 24,
+        "count_mobile": 12,
+        "size_min": 14,
+        "size_max": 34,
+        "fall_min": 9,
+        "fall_max": 18,
+        "sway": 40,
+        "opacity": 45,
+        "run_seconds": 5,
+        "once_per_session": true,
+        "show_toggle": true,
+        "pause_label": "Pausar el efecto",
+        "play_label": "Reanudar el efecto"
+      }
     }
   },
   "order": [
     "announcement-bar",
     "black_friday_ribon_eC6P3W",
     "header",
-    "seoptimizan_precio_descuento_8Dfg3r"
+    "seoptimizan_precio_descuento_8Dfg3r",
+    "seoptimizan_efecto_caida_cdp9mN"
   ]
 }
