@@ -25,46 +25,32 @@
     "marquesina_promocional_nNHaPT": {
       "type": "marquesina-promocional",
       "blocks": {
-        "text_YjMcBU": {
-          "type": "text",
-          "settings": {
-            "text": "Black Friday: 20% OFF Briefs. Selling out fast"
-          }
-        },
-        "text_cwB3ee": {
-          "type": "text",
-          "settings": {
-            "text": "20% OFF Boxers. Grab your size before it's gone"
-          }
-        },
         "text_jJRtyM": {
           "type": "text",
           "settings": {
-            "text": "20% OFF Bikinis. Don't wait, they're going fast"
+            "text": "BLACK FRIDAY | 20%, 30%, 40% & UP TO 46% OFF"
           }
         },
         "text_gE4734": {
           "type": "text",
           "settings": {
-            "text": "Sexy Boy at 30% OFF. Selling out fast"
+            "text": "UP TO 46% OFF STOREWIDE | SHOP NOW"
           }
         },
         "text_RJrCqd": {
           "type": "text",
           "settings": {
-            "text": "30% OFF Thongs. Popular sizes are going quickly"
+            "text": "BLACK FRIDAY DEALS | BIG SAVINGS. NO CODE NEEDED."
           }
         },
         "text_rercxB": {
           "type": "text",
           "settings": {
-            "text": "30% OFF Jockstraps. Get yours before they're gone"
+            "text": "SAVE UP TO 46% | GRAB YOUR SIZE BEFORE IT'S GONE!"
           }
         }
       },
       "block_order": [
-        "text_YjMcBU",
-        "text_cwB3ee",
         "text_jJRtyM",
         "text_gE4734",
         "text_RJrCqd",
