@@ -7,7 +7,7 @@
   "installed": {
     "core": {
       "version": "1.2.0",
-      "library_commit": "f96f27976b4c23513e8ad95ca8c4454d43342050",
+      "library_commit": "541da776d229a8de6fb83de95715bcc6707bb0c1",
       "files": {
         "assets/seopt-core.css": "f0a77f48e036408ac72919e444cdb0ed4063af4eb16024e163b55c7f1f2cf44c",
         "snippets/seopt-head.liquid": "6e1d9e0815264d5e748419fcec8f0510c280a926d64cc21e89b261ecb733a5c9"
@@ -20,6 +20,15 @@
         "assets/seopt-cuadricula-blogs.css": "fb4d31e3b0d0f389c07ed5a772809341f9f3b5ad081a6adb1fed53aba3dd0a8c",
         "assets/seopt-cuadricula-blogs.js": "b035dd3f8c8e6d7771c117d26f9dfdb3398a852457348f2ca8e593bc8fe4ea0e",
         "sections/cuadricula-blogs.liquid": "d2bc02c3af2170c09db45358fb918dae7d0b0eb46a985f9f1026f0dd14129c6b"
+      }
+    },
+    "efecto-caida": {
+      "version": "1.1.1",
+      "library_commit": "541da776d229a8de6fb83de95715bcc6707bb0c1",
+      "files": {
+        "assets/seopt-efecto-caida.css": "e7c047d00fcb3ee763ec38bd250beb7b075572c313483820ab12e63748e027f2",
+        "assets/seopt-efecto-caida.js": "8cfa8c871c03e9ef6dacb14bcfa03fef1aae7e701f453ff6a5cf83ff60f9c334",
+        "sections/seoptimizan-efecto-caida.liquid": "7e8fcac84ec0ec56497d4a86b105121cbecfe6e02940626f4ec8d5fe7641ca62"
       }
     },
     "hero-simple": {
